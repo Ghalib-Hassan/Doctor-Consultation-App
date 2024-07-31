@@ -1,7 +1,10 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:doctor_consultation/Custom_Widgets/Onboarding_screen_Button/button.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
 import 'package:doctor_consultation/Home_Screen/home_screen.dart';
+import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/popular_doctor.dart';
+import 'package:doctor_consultation/Onboarding_Screens/screen_03.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,16 +17,24 @@ class OnboardingScreen02 extends StatefulWidget {
 
 class _OnboardingScreen02State extends State<OnboardingScreen02> {
   @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 10),
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => OnboardingScreen03())));
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Positioned(
-            top: 600,
+            top: 750,
             right: -60,
             child: Container(
               width: 80.w,
-              height: 150.h,
+              height: 80.h,
               decoration: BoxDecoration(
                   color: splashColor.withOpacity(0.1),
                   borderRadius: BorderRadius.all(Radius.circular(250).w),
@@ -59,8 +70,8 @@ class _OnboardingScreen02State extends State<OnboardingScreen02> {
             right: 30,
             top: 80,
             child: Container(
-              width: 250.r * 2, // diameter of the circle
-              height: 250.r * 2,
+              width: 350.r * 2, // diameter of the circle
+              height: 350.r * 2,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -100,7 +111,12 @@ class _OnboardingScreen02State extends State<OnboardingScreen02> {
                   ),
                   OnboardingButton(
                     text: 'Get Started',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    },
                   ),
                   SizedBox(
                     height: 10.h,
@@ -110,7 +126,7 @@ class _OnboardingScreen02State extends State<OnboardingScreen02> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => OnboardingScreen03()));
                     },
                     child: Text(
                       'Skip',

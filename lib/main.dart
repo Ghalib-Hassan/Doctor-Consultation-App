@@ -1,6 +1,12 @@
 import 'dart:async';
 
+import 'package:doctor_consultation/Haider/forfot.dart';
+import 'package:doctor_consultation/Home_Screen/Live_Screen/live_screen.dart';
 import 'package:doctor_consultation/Home_Screen/home_screen.dart';
+import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/Book_Now/book_now.dart';
+import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/Book_Now/book_now_02.dart';
+import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/find_doctors.dart';
+import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/popular_doctor.dart';
 import 'package:doctor_consultation/Onboarding_Screens/screen_01.dart';
 // import 'package:doctor_consultation/Onboarding_screens/screen_02.dart';
 // import 'package:doctor_consultation/Onboarding_Screens/screen_03.dart';
@@ -19,24 +25,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(1249, 880),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'First Method',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-            ),
-            home: child,
-          );
-        },
-        child: OnboardingScreen02()
-        //const MyHomePage(),
-        //HomeScreen()
+      designSize: const Size(1249, 880),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'First Method',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: child,
         );
+      },
+      child:
+
+          //Login()
+          //PopularDoctor()
+
+          //BookNow02()
+          //FindDoctors()
+          //OnboardingScreen02()
+          //LiveScreen()
+
+          const MyHomePage(),
+      // HomeScreen()
+    );
   }
 }
 
@@ -62,11 +77,28 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         children: [
           Positioned(
-            top: -200,
-            left: -100,
+            top: 750,
+            right: -60,
             child: Container(
-              width: 180.w,
-              height: 250.h,
+              width: 80.w,
+              height: 80.h,
+              decoration: BoxDecoration(
+                  color: splashColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.all(Radius.circular(250).w),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 100,
+                        spreadRadius: 150,
+                        color: splashColor.withOpacity(.7))
+                  ]),
+            ),
+          ),
+          Positioned(
+            top: -30,
+            left: -60,
+            child: Container(
+              width: 80.w,
+              height: 80.h,
               decoration: BoxDecoration(
                   color: splashColor.withOpacity(0.1),
                   borderRadius: BorderRadius.all(Radius.circular(250).w),
@@ -96,23 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.bold),
                 ),
               ],
-            ),
-          ),
-          Positioned(
-            top: 550,
-            right: -80,
-            child: Container(
-              width: 80.w,
-              height: 150.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
             ),
           ),
         ],

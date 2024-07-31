@@ -81,6 +81,21 @@ flutter:
     - asset/Home-Screen/feature-dr-1.jpeg
     - asset/Home-Screen/feature-dr-2.jpeg
     - asset/Home-Screen/feature-dr-3.jpeg
+    - asset/Live-Screen/dr.jpeg
+    - asset/Live-Screen/first.jpeg
+    - asset/Live-Screen/second.jpeg
+    - asset/Live-Screen/third.jpeg
+    - asset/Live-Screen/fourth.jpeg
+    - asset/Find-Doctors/one.jpeg
+    - asset/Find-Doctors/two.jpeg
+    - asset/Find-Doctors/three.jpeg
+    - asset/Find-Doctors/four.jpeg
+    - asset/Popular-Doctors/one.jpeg
+    - asset/Popular-Doctors/two.jpeg
+    - asset/Popular-Doctors/three.jpeg
+    - asset/Popular-Doctors/one-2.jpeg
+    - asset/Popular-Doctors/three-2.jpeg
+    - asset/map.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

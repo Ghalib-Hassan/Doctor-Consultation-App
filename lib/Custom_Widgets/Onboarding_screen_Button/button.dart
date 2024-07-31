@@ -20,7 +20,7 @@ class OnboardingButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 140.w, vertical: 17),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(13).w))),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: TextStyle(color: Colors.white, fontSize: 70.sp),
