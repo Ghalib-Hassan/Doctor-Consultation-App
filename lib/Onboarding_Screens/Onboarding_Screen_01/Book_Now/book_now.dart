@@ -124,7 +124,8 @@ class _BookNowState extends State<BookNow> {
                     Text(
                       'Upasana Dental Clinic, salt lake',
                       style: TextStyle(
-                          fontSize: 40.sp, color: Colors.black.withOpacity(.6)),
+                          fontSize: 40.sp,
+                          color: Color(0x677294).withOpacity(1)),
                     ),
                     RatingBar(
                       size: 20,
@@ -173,8 +174,8 @@ class _BookNowState extends State<BookNow> {
         ),
         Text(
           'No slots available',
-          style: TextStyle(
-              color: Colors.blueAccent.withOpacity(.6), fontSize: 50.sp),
+          style:
+              TextStyle(color: Color(0x677294).withOpacity(1), fontSize: 50.sp),
         ),
         SizedBox(
           height: 20.h,
@@ -276,9 +277,8 @@ class _selectedContainerState extends State<selectedContainer> {
               widget.slot,
               style: TextStyle(
                 fontSize: 40.sp,
-                color: isSelected
-                    ? Colors.white
-                    : Colors.blueAccent.withOpacity(.7),
+                color:
+                    isSelected ? Colors.white : Color(0x677294).withOpacity(1),
               ),
             ),
           ],

@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   custom_rating_bar: ^3.0.0
   molten_navigationbar_flutter: ^1.0.1
+  table_calendar: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +97,11 @@ flutter:
     - asset/Popular-Doctors/one-2.jpeg
     - asset/Popular-Doctors/three-2.jpeg
     - asset/map.png
+    - asset/Appointment/1.png
+    - asset/Appointment/2.png
+    - asset/Appointment/3.png
+    - asset/Appointment/4.png
+    - asset/calender.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

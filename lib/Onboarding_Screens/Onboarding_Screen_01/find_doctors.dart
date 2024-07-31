@@ -195,8 +195,7 @@ class _FindDoctorsState extends State<FindDoctors> {
                                   Text(
                                     '${experience[index]}',
                                     style: TextStyle(
-                                        color:
-                                            Colors.blueAccent.withOpacity(.7),
+                                        color: Color(0x677294).withOpacity(1),
                                         fontSize: 50.sp),
                                   ),
                                   SizedBox(
@@ -214,8 +213,8 @@ class _FindDoctorsState extends State<FindDoctors> {
                                           Text(
                                             '${percent[index]}',
                                             style: TextStyle(
-                                                color: Colors.blueAccent
-                                                    .withOpacity(.7),
+                                                color: Color(0x677294)
+                                                    .withOpacity(1),
                                                 fontSize: 30.sp),
                                           )
                                         ],
@@ -233,8 +232,8 @@ class _FindDoctorsState extends State<FindDoctors> {
                                           Text(
                                             '${stores[index]}',
                                             style: TextStyle(
-                                                color: Colors.blueAccent
-                                                    .withOpacity(.7),
+                                                color: Color(0x677294)
+                                                    .withOpacity(1),
                                                 fontSize: 30.sp),
                                           )
                                         ],
@@ -262,7 +261,8 @@ class _FindDoctorsState extends State<FindDoctors> {
                                       text: TextSpan(
                                           style: TextStyle(
                                               fontSize: 30.sp,
-                                              color: Colors.blueAccent),
+                                              color: Color(0x677294)
+                                                  .withOpacity(1)),
                                           children: [
                                         TextSpan(
                                             text: '${time[index]} ',

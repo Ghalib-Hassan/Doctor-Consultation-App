@@ -1,5 +1,6 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
+import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/Doctor_Detail/Appointment/appointment.dart';
 import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/popular_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -99,7 +100,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
               padding: const EdgeInsets.only(top: 20.0),
               child: Container(
                 width: 1100.w,
-                height: 180.h,
+                height: 170.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20).w),
                     color: Colors.white.withOpacity(1)),
@@ -122,6 +123,9 @@ class _DoctorDetailState extends State<DoctorDetail> {
                                 fit: BoxFit.cover,
                               ),
                             ),
+                            SizedBox(
+                              width: 15.w,
+                            ),
                             Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -138,8 +142,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                                   Text(
                                     'Specialist Cardiologist ',
                                     style: TextStyle(
-                                        color:
-                                            Colors.blueAccent.withOpacity(.7),
+                                        color: Color(0x677294).withOpacity(1),
                                         fontSize: 50.sp),
                                   ),
                                   SizedBox(
@@ -161,7 +164,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                                     Text(
                                       '\$ 28.00/hr',
                                       style: TextStyle(
-                                          color: Colors.blue.withOpacity(.7),
+                                          color: Color(0x677294).withOpacity(1),
                                           fontSize: 45.sp),
                                     )
                                   ])
@@ -171,18 +174,26 @@ class _DoctorDetailState extends State<DoctorDetail> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Container(
-                        width: 350.w,
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                            color: mainColor.withOpacity(1),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20).w)),
-                        child: Center(
-                          child: Text(
-                            'Book Now',
-                            style: TextStyle(
-                                fontSize: 60.sp, fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Appointment()));
+                        },
+                        child: Container(
+                          width: 350.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                              color: mainColor.withOpacity(1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20).w)),
+                          child: Center(
+                            child: Text(
+                              'Book Now',
+                              style: TextStyle(
+                                  fontSize: 60.sp, fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       )
@@ -218,7 +229,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                         'Running',
                         style: TextStyle(
                             fontSize: 40.sp,
-                            color: Colors.blue.withOpacity(.7)),
+                            color: Color(0x677294).withOpacity(1)),
                       )
                     ],
                   ),
@@ -236,7 +247,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                         'Ongoing',
                         style: TextStyle(
                             fontSize: 40.sp,
-                            color: Colors.blue.withOpacity(.7)),
+                            color: Color(0x677294).withOpacity(1)),
                       )
                     ],
                   ),
@@ -254,7 +265,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                         'Patient',
                         style: TextStyle(
                             fontSize: 40.sp,
-                            color: Colors.blue.withOpacity(.7)),
+                            color: Color(0x677294).withOpacity(1)),
                       )
                     ],
                   )
@@ -323,6 +334,33 @@ class _DoctorDetailState extends State<DoctorDetail> {
             )
           ]),
         ],
+      ),
+    );
+  }
+}
+
+class favIcon extends StatefulWidget {
+  const favIcon({
+    super.key,
+  });
+
+  @override
+  State<favIcon> createState() => _favIconState();
+}
+
+class _favIconState extends State<favIcon> {
+  bool fav = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          fav = !fav;
+        });
+      },
+      child: Icon(
+        fav ? Icons.favorite : Icons.favorite_outline,
+        color: fav ? Colors.red : Colors.black,
       ),
     );
   }

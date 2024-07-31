@@ -175,7 +175,7 @@ class _PopularDoctorState extends State<PopularDoctor> {
                               '${occupation[index]}',
                               style: TextStyle(
                                   fontSize: 30.sp,
-                                  color: Colors.blue.withOpacity(.7)),
+                                  color: Color(0x677294).withOpacity(1)),
                             ),
                             RatingBar(
                               size: 20,
@@ -252,8 +252,8 @@ class _PopularDoctorState extends State<PopularDoctor> {
                                       Text(
                                         '${occupation2[index]}',
                                         style: TextStyle(
-                                            color: Colors.blueAccent
-                                                .withOpacity(.7),
+                                            color:
+                                                Color(0x677294).withOpacity(1),
                                             fontSize: 50.sp),
                                       ),
                                       SizedBox(
