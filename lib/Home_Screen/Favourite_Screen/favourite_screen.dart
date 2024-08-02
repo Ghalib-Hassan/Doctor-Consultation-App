@@ -1,5 +1,6 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
+import 'package:doctor_consultation/Haider/Auth_Screens/signup.dart';
 import 'package:doctor_consultation/Home_Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -351,6 +352,9 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             } else if (clickedIndex == 1) {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => FavouriteScreen()));
+            } else if (clickedIndex == 3) {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Signup()));
             }
           });
         },

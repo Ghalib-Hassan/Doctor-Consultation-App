@@ -104,6 +104,35 @@ flutter:
     - asset/calender.png
     - asset/abuzar.jpeg
     - asset/cancel.png
+    - asset/Hassam/doctor.png
+    - asset/Hassam/home.png
+    - asset/Hassam/profile.png
+    - asset/Hassam/reports.png
+    - asset/Hassam/1.jpeg
+    - asset/Hassam/2.jpeg
+    - asset/Hassam/3.jpeg
+    - asset/Hassam/Group1.png
+    - asset/Hassam/hasso.jpg
+    - asset/Hassam/headline.png
+    - asset/Hassam/illustration.png
+    - asset/Hassam/illustration1.png
+    - asset/Hassam/step.png
+    - asset/assets/Find-Doctors/doctor_one.png
+    - asset/assets/Find-Doctors/doctor_two.png
+    - asset/assets/Find-Doctors/doctor_three.png
+    - asset/assets/Find-Doctors/doctor_four.png
+    - asset/assets/image/image_1.png
+    - asset/assets/image/image_2.png
+    - asset/assets/image/image_3.png
+    - asset/assets/image/mypic.jpg
+    - asset/assets/image/child.webp
+    - asset/assets/order-managment/one-removebg-preview.png
+    - asset/assets/order-managment/two-removebg-preview.png
+    - asset/assets/order-managment/three-removebg-preview.png
+    - asset/assets/order-managment/four-removebg-preview.png
+    - asset/assets/order-managment/five-removebg-preview.png
+    - asset/assets/order-managment/six-removebg-preview.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

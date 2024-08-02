@@ -1,5 +1,7 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
+import 'package:doctor_consultation/Haider/Auth_Screens/signup.dart';
+import 'package:doctor_consultation/Haider/Main_Screens/menu_screen.dart';
 import 'package:doctor_consultation/Home_Screen/Favourite_Screen/favourite_screen.dart';
 import 'package:doctor_consultation/Home_Screen/Live_Screen/live_screen.dart';
 import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/find_doctors.dart';
@@ -153,10 +155,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontSize: 50.sp, fontWeight: FontWeight.bold))
                         ]),
                       ),
-                      CircleAvatar(
-                        backgroundImage:
-                            AssetImage('asset/home-screen-profile.jpeg'),
-                        radius: 180.r,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MenuScreen()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage:
+                              AssetImage('asset/home-screen-profile.jpeg'),
+                          radius: 180.r,
+                        ),
                       ),
                     ],
                   ),
@@ -633,6 +643,9 @@ class _HomeScreenState extends State<HomeScreen> {
             } else if (clickedIndex == 1) {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => FavouriteScreen()));
+            } else if (clickedIndex == 3) {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Signup()));
             }
           });
         },
