@@ -1,18 +1,4 @@
 import 'dart:async';
-
-import 'package:doctor_consultation/Haider/Auth_Screens/signup.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/add_record1.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/all_records.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/help_center.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/location_screen.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/medical_records.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/medicine_order1.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/medicine_order2.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/menu_screen.dart';
-import 'package:doctor_consultation/Haider/Main_Screens/my_doctors.dart';
-import 'package:doctor_consultation/Hassam/page31.dart';
-import 'package:doctor_consultation/Hassam/page32.dart';
-import 'package:doctor_consultation/Hassam/page33.dart';
 import 'package:doctor_consultation/Onboarding_Screens/screen_01.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
 import 'package:flutter/material.dart';
@@ -41,14 +27,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child:
-
-          //MenuScreen()
-
-          ///Page03()
-
-          //Diagnostic()
-          const MyHomePage(),
+      child: const MyHomePage(),
     );
   }
 }
