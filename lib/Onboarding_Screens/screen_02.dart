@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:doctor_consultation/Custom_Widgets/Onboarding_screen_Button/button.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
 import 'package:doctor_consultation/Home_Screen/home_screen.dart';
-import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/popular_doctor.dart';
 import 'package:doctor_consultation/Onboarding_Screens/screen_03.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,14 +15,6 @@ class OnboardingScreen02 extends StatefulWidget {
 
 class _OnboardingScreen02State extends State<OnboardingScreen02> {
   @override
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 10),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => OnboardingScreen03())));
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(

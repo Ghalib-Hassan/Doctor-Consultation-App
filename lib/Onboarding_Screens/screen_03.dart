@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:doctor_consultation/Custom_Widgets/Onboarding_screen_Button/button.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
@@ -15,14 +14,6 @@ class OnboardingScreen03 extends StatefulWidget {
 
 class _OnboardingScreen03State extends State<OnboardingScreen03> {
   @override
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 10),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeScreen())));
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(

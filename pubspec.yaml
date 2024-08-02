@@ -102,6 +102,8 @@ flutter:
     - asset/Appointment/3.png
     - asset/Appointment/4.png
     - asset/calender.png
+    - asset/abuzar.jpeg
+    - asset/cancel.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

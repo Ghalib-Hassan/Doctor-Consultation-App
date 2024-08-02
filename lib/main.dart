@@ -1,17 +1,7 @@
 import 'dart:async';
-import 'package:doctor_consultation/Home_Screen/Live_Screen/live_screen.dart';
-import 'package:doctor_consultation/Home_Screen/home_screen.dart';
-import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/Book_Now/book_now.dart';
-import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/Book_Now/book_now_02.dart';
-import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_01/find_doctors.dart';
-import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/Doctor_Detail/Appointment/appointment.dart';
-import 'package:doctor_consultation/Onboarding_Screens/Onboarding_Screen_02/popular_doctor.dart';
+
 import 'package:doctor_consultation/Onboarding_Screens/screen_01.dart';
-// import 'package:doctor_consultation/Onboarding_screens/screen_02.dart';
-// import 'package:doctor_consultation/Onboarding_Screens/screen_03.dart';
 import 'package:doctor_consultation/Custom_Widgets/colors.dart';
-import 'package:doctor_consultation/Onboarding_Screens/screen_02.dart';
-import 'package:doctor_consultation/Onboarding_Screens/screen_03.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,32 +14,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(1249, 880),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'First Method',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-            ),
-            home: child,
-          );
-        },
-        child: Appointment()
-        //Login()
-        //PopularDoctor()
-
-        //BookNow02()
-        //FindDoctors()
-        //OnboardingScreen02()
-        //LiveScreen()
-
-        // const MyHomePage(),
-        // HomeScreen()
+      designSize: const Size(1249, 880),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'First Method',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: child,
         );
+      },
+      child: const MyHomePage(),
+    );
   }
 }
 
@@ -114,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Image.asset(
                   'asset/main-logo.png',
-                  width: 400.w,
+                  width: 500.w,
                   height: 200.h,
                   fit: BoxFit.fill,
                 ),
