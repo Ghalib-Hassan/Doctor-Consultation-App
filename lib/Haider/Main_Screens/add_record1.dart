@@ -15,272 +15,320 @@ class _AddRecordsState extends State<AddRecords> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MedicalRecord()));
-            },
-            child: Container(
-              width: 10.w,
-              height: 10.h,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10).w,
-                  color: Colors.white),
-              child: Icon(Icons.arrow_back_ios_new_rounded),
-            ),
-          ),
-        ),
-        title: Text(
-          'Add Records',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 80.sp),
-        ),
-      ),
-
       //////////
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 290.w,
-                    height: 133.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10).w,
-                        color: Colors.green[200]),
-                    child: Image.asset(
-                      'asset/assets/image/child.webp',
-                      scale: 1,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: 290.w,
-                    height: 142.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10).w,
-                        color: Colors.green[100]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.add,
-                          color: mainColor.withOpacity(1),
-                          size: 50,
-                        ),
-                        Text(
-                          'Add more images',
-                          style:
-                              TextStyle(color: Colors.green, fontSize: 60.sp),
-                          textAlign: TextAlign.center,
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            Container(
-              width: double.infinity.w,
-              height: 600.h,
+        child: Stack(children: [
+          Positioned(
+            top: 750,
+            right: -60,
+            child: Container(
+              width: 80.w,
+              height: 80.h,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20).w,
-                  color: Colors.white,
+                  color: splashColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.all(Radius.circular(250).w),
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: 5,
-                        spreadRadius: 5,
-                        color: Color.fromARGB(255, 236, 231, 231))
+                        blurRadius: 100,
+                        spreadRadius: 150,
+                        color: splashColor.withOpacity(.7))
                   ]),
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
+            ),
+          ),
+          Positioned(
+            top: -30,
+            left: -60,
+            child: Container(
+              width: 80.w,
+              height: 80.h,
+              decoration: BoxDecoration(
+                  color: splashColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.all(Radius.circular(250).w),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 100,
+                        spreadRadius: 150,
+                        color: splashColor.withOpacity(.7))
+                  ]),
+            ),
+          ),
+          Column(
+            children: [
+              Padding(
+                  padding:
+                      const EdgeInsets.only(top: 50.0, left: 20, right: 20),
+                  child: Row(children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MedicalRecord()));
+                      },
+                      child: Container(
+                        height: 40.h,
+                        width: 90.w,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10).w)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 50.w,
+                    ),
+                    Text(
+                      'Add Records',
+                      style: TextStyle(
+                          fontSize: 80.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    )
+                  ])),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Record for',
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 60.sp),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Hiader khan khalil',
-                              style: TextStyle(
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 60.sp),
-                            )
-                          ],
-                        ),
-                        Icon(Icons.border_color_outlined)
-                      ],
+                    Container(
+                      width: 290.w,
+                      height: 133.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10).w,
+                          color: Colors.green[200]),
+                      child: Image.asset(
+                        'asset/assets/image/child.webp',
+                        scale: 1,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     SizedBox(
-                      height: 20,
-                    ),
-                    Divider(),
-                    //////////////////
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Type of record',
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 60.sp),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.insert_page_break,
-                                      color: Color.fromARGB(255, 92, 88, 88),
-                                    ),
-                                    Text(
-                                      'Report',
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 92, 88, 88),
-                                          fontSize: 60.sp),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 50,
-                                ),
-                                //////////////////
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.restore_page_rounded,
-                                      color: Colors.green,
-                                    ),
-                                    Text(
-                                      'Prescription',
-                                      style: TextStyle(
-                                          color: Colors.green, fontSize: 60.sp),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 50,
-                                ),
-                                ///////////
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.receipt,
-                                      color: Color.fromARGB(255, 92, 88, 88),
-                                    ),
-                                    Text(
-                                      'Invoice',
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 92, 88, 88),
-                                          fontSize: 60.sp),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Divider(),
-                    //////////////////
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Record created on',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 60.sp)),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              '27 Feb, 2021',
-                              style: TextStyle(
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 60.sp),
-                            )
-                          ],
-                        ),
-                        Icon(Icons.border_color_outlined)
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Divider(),
-                    SizedBox(
-                      height: 20,
+                      width: 20,
                     ),
                     Container(
-                      width: 370.w,
-                      height: 50.h,
+                      width: 290.w,
+                      height: 142.h,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5).w,
-                          color: mainColor.withOpacity(1)),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            _showAddRecordsDialog(context);
-                          },
-                          child: Text(
-                            'Upload record',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 60.sp),
+                          borderRadius: BorderRadius.circular(10).w,
+                          color: Colors.green[100]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: mainColor.withOpacity(1),
+                            size: 50,
                           ),
-                        ),
+                          Text(
+                            'Add more images',
+                            style:
+                                TextStyle(color: Colors.green, fontSize: 60.sp),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
                       ),
                     )
                   ],
                 ),
               ),
-            )
-          ],
-        ),
+              SizedBox(
+                height: 100,
+              ),
+              Container(
+                width: double.infinity.w,
+                height: 600.h,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20).w,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 5,
+                          spreadRadius: 5,
+                          color: Color.fromARGB(255, 236, 231, 231))
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Record for',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 60.sp),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Hiader khan khalil',
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 60.sp),
+                              )
+                            ],
+                          ),
+                          Icon(Icons.border_color_outlined)
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Divider(),
+                      //////////////////
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Type of record',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 60.sp),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      Icon(
+                                        Icons.insert_page_break,
+                                        color: Color.fromARGB(255, 92, 88, 88),
+                                      ),
+                                      Text(
+                                        'Report',
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 92, 88, 88),
+                                            fontSize: 60.sp),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 50,
+                                  ),
+                                  //////////////////
+                                  Column(
+                                    children: [
+                                      Icon(
+                                        Icons.restore_page_rounded,
+                                        color: Colors.green,
+                                      ),
+                                      Text(
+                                        'Prescription',
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontSize: 60.sp),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 50,
+                                  ),
+                                  ///////////
+                                  Column(
+                                    children: [
+                                      Icon(
+                                        Icons.receipt,
+                                        color: Color.fromARGB(255, 92, 88, 88),
+                                      ),
+                                      Text(
+                                        'Invoice',
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 92, 88, 88),
+                                            fontSize: 60.sp),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Divider(),
+                      //////////////////
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Record created on',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 60.sp)),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                '27 Feb, 2021',
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 60.sp),
+                              )
+                            ],
+                          ),
+                          Icon(Icons.border_color_outlined)
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Divider(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: 370.w,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5).w,
+                            color: mainColor.withOpacity(1)),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              _showAddRecordsDialog(context);
+                            },
+                            child: Text(
+                              'Upload record',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 60.sp),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ]),
       ),
     );
   }

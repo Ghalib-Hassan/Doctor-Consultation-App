@@ -15,32 +15,80 @@ class _MedicalRecordState extends State<MedicalRecord> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MenuScreen()));
-            },
-            child: Container(
-              width: 10,
-              height: 10,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.white),
-              child: Icon(Icons.arrow_back_ios_new_rounded),
-            ),
+      body: Stack(children: [
+        Positioned(
+          top: 750,
+          right: -60,
+          child: Container(
+            width: 80.w,
+            height: 80.h,
+            decoration: BoxDecoration(
+                color: splashColor.withOpacity(0.1),
+                borderRadius: BorderRadius.all(Radius.circular(250).w),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 100,
+                      spreadRadius: 150,
+                      color: splashColor.withOpacity(.7))
+                ]),
           ),
         ),
-        title: Text(
-          'Medical Records',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 80.sp),
+        Positioned(
+          top: -30,
+          left: -60,
+          child: Container(
+            width: 80.w,
+            height: 80.h,
+            decoration: BoxDecoration(
+                color: splashColor.withOpacity(0.1),
+                borderRadius: BorderRadius.all(Radius.circular(250).w),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 100,
+                      spreadRadius: 150,
+                      color: splashColor.withOpacity(.7))
+                ]),
+          ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Column(
           children: [
+            Padding(
+                padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
+                child: Row(children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MenuScreen()));
+                    },
+                    child: Container(
+                      height: 40.h,
+                      width: 90.w,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10).w)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.arrow_back_ios),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 50.w,
+                  ),
+                  Text(
+                    'Medical Records',
+                    style: TextStyle(
+                        fontSize: 80.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  )
+                ])),
+            SizedBox(
+              height: 130.h,
+            ),
             Container(
               width: 180,
               height: 180,
@@ -96,7 +144,7 @@ class _MedicalRecordState extends State<MedicalRecord> {
             )
           ],
         ),
-      ),
+      ]),
     );
   }
 }
