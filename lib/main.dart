@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:doctor_consultation/Onboarding_Screens/screen_01.dart';
-import 'package:doctor_consultation/Custom_Widgets/colors.dart';
+import 'package:doctor_consultation/src/Onboarding_Screens/screen_01.dart';
+import 'package:doctor_consultation/src/Utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1249, 880),
+      designSize: const Size(200, 630),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
@@ -44,11 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 5),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => OnboardingScreen01())));
+        const Duration(seconds: 5),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const OnboardingScreen01())));
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -61,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 80.h,
               decoration: BoxDecoration(
                   color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(Radius.circular(250).w),
+                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
                   boxShadow: [
                     BoxShadow(
                         blurRadius: 100,
@@ -78,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 80.h,
               decoration: BoxDecoration(
                   color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(Radius.circular(250).w),
+                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
                   boxShadow: [
                     BoxShadow(
                         blurRadius: 100,
