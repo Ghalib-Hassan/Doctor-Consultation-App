@@ -1,135 +1,66 @@
-import 'package:doctor_consultation/src/Core/Screens/diagnostic_test2.dart';
 import 'package:doctor_consultation/src/Core/Screens/patient_detail2.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Page03 extends StatefulWidget {
-  const Page03({super.key});
+import '../../Utils/navigatePush.dart';
+
+class PatientDetail01 extends StatefulWidget {
+  const PatientDetail01({super.key});
 
   @override
-  State<Page03> createState() => _Page03State();
+  State<PatientDetail01> createState() => _PatientDetail01State();
 }
 
-class _Page03State extends State<Page03> {
+class _PatientDetail01State extends State<PatientDetail01> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Positioned(
-          top: 750,
-          right: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
-        Positioned(
-          top: -30,
-          left: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
+        const Backgroundsplash(),
         Column(
           children: [
-            Row(
-              children: [
-                Padding(
-                    padding:
-                        const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                    child: Row(children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const DiagnosticTest()));
-                        },
-                        child: Container(
-                          height: 40.h,
-                          width: 100.w,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                  const Radius.circular(20).w)),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(Icons.arrow_back_ios),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 80.w,
-                      ),
-                      Text(
-                        'Patient Details',
-                        style: TextStyle(
-                            fontSize: 80.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )
-                    ])),
-              ],
+            AppbarPop(
+              sizedWidth: 10.w,
+              title: 'Patient Details',
             ),
-            const SizedBox(
-              height: 100,
+            SizedBox(
+              height: 80.h,
             ),
-            Center(
-              child: Container(
-                child: Image.asset('asset/Hassam/illustration1.png'),
+            Container(
+              width: 110.w,
+              height: 160.h,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(const Radius.circular(200).w),
+                  color: const Color(0x00c6efe5).withOpacity(.7)),
+              child: Image.asset(
+                'asset/Hassam/illustration1.png',
+                scale: 1,
               ),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: 20.h,
             ),
-            Container(
-              child: Text('Your cart is empty',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 70.sp,
-                      color: Colors.black)),
+            Text(
+              'Your cart is empty',
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: 50.h,
             ),
-            Container(
-              height: 50,
-              width: 200,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.greenAccent),
-                  borderRadius: BorderRadius.circular(5),
-                  color: mainColor.withOpacity(1)),
-              child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Page4()));
-                  },
-                  child: Text(
-                    'ADD TEST',
-                    style: TextStyle(color: Colors.white, fontSize: 60.sp),
-                  )),
-            )
+            Buttons(
+                fontSize: 14.sp,
+                Cwidth: 140.w,
+                text: 'Add Tests',
+                onPressed: () {
+                  navPush(context, const PatientDetail02());
+                })
           ],
         ),
       ]),

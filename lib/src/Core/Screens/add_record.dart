@@ -1,6 +1,9 @@
 import 'package:doctor_consultation/src/Core/Screens/all_records.dart';
-import 'package:doctor_consultation/src/Core/Screens/medical_records.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,104 +19,46 @@ class _AddRecordsState extends State<AddRecords> {
   Widget build(BuildContext context) {
     return Scaffold(
       //////////
-      body: SingleChildScrollView(
-        child: Stack(children: [
-          Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Positioned(
-            top: -30,
-            left: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Column(
+      body: Stack(children: [
+        const Backgroundsplash(),
+        SingleChildScrollView(
+          child: Column(
             children: [
+              AppbarPop(
+                sizedWidth: 10.w,
+                title: 'Add Records',
+              ),
               Padding(
-                  padding:
-                      const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                  child: Row(children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MedicalRecord()));
-                      },
-                      child: Container(
-                        height: 40.h,
-                        width: 90.w,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(const Radius.circular(10).w)),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.arrow_back_ios),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 50.w,
-                    ),
-                    Text(
-                      'Add Records',
-                      style: TextStyle(
-                          fontSize: 80.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    )
-                  ])),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, left: 20, right: 30),
+                padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 290.w,
+                      width: 70.w,
                       height: 133.h,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10).w,
+                          borderRadius:
+                              BorderRadius.all(const Radius.circular(4).w),
                           color: Colors.green[200]),
-                      child: Image.asset(
-                        'asset/assets/image/child.webp',
-                        scale: 1,
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius:
+                            BorderRadius.all(const Radius.circular(4).w),
+                        child: Image.asset(
+                          'asset/assets/image/child.webp',
+                          scale: 1,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
+                    SizedBox(
+                      width: 7.w,
                     ),
                     Container(
-                      width: 290.w,
+                      width: 70.w,
                       height: 142.h,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10).w,
+                          borderRadius:
+                              BorderRadius.all(const Radius.circular(4).w),
                           color: Colors.green[100]),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -121,12 +66,12 @@ class _AddRecordsState extends State<AddRecords> {
                           Icon(
                             Icons.add,
                             color: mainColor.withOpacity(1),
-                            size: 50,
+                            size: 40,
                           ),
                           Text(
                             'Add more images',
                             style:
-                                TextStyle(color: Colors.green, fontSize: 60.sp),
+                                TextStyle(color: Colors.green, fontSize: 14.sp),
                             textAlign: TextAlign.center,
                           )
                         ],
@@ -135,20 +80,23 @@ class _AddRecordsState extends State<AddRecords> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: 70.h,
               ),
               Container(
                 width: double.infinity.w,
-                height: 600.h,
+                height: 340.h,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20).w,
+                    borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(20).w,
+                      topRight: const Radius.circular(20).w,
+                    ),
                     color: Colors.white,
                     boxShadow: const [
                       BoxShadow(
                           blurRadius: 5,
                           spreadRadius: 5,
-                          color: Color.fromARGB(255, 236, 231, 231))
+                          color: Color(0xFFECE7E7))
                     ]),
                 child: Padding(
                   padding: const EdgeInsets.all(15),
@@ -163,30 +111,30 @@ class _AddRecordsState extends State<AddRecords> {
                               Text(
                                 'Record for',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 60.sp),
+                                    color: Colors.black, fontSize: 10.sp),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: 5.h,
                               ),
                               Text(
-                                'Hiader khan khalil',
+                                'Haider khan khalil',
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 60.sp),
+                                    fontSize: 13.sp),
                               )
                             ],
                           ),
-                          const Icon(Icons.border_color_outlined)
+                          const Icon(Icons.colorize_outlined)
                         ],
                       ),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       const Divider(),
                       //////////////////
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       Row(
                         children: [
@@ -196,10 +144,10 @@ class _AddRecordsState extends State<AddRecords> {
                               Text(
                                 'Type of record',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 60.sp),
+                                    color: Colors.black, fontSize: 10.sp),
                               ),
-                              const SizedBox(
-                                height: 15,
+                              SizedBox(
+                                height: 5.h,
                               ),
                               Row(
                                 children: [
@@ -207,19 +155,18 @@ class _AddRecordsState extends State<AddRecords> {
                                     children: [
                                       const Icon(
                                         Icons.insert_page_break,
-                                        color: Color.fromARGB(255, 92, 88, 88),
+                                        color: Color(0xFF5C5858),
                                       ),
                                       Text(
                                         'Report',
                                         style: TextStyle(
-                                            color: const Color.fromARGB(
-                                                255, 92, 88, 88),
-                                            fontSize: 60.sp),
+                                            color: const Color(0xFF5C5858),
+                                            fontSize: 14.sp),
                                       )
                                     ],
                                   ),
-                                  const SizedBox(
-                                    width: 50,
+                                  SizedBox(
+                                    width: 25.w,
                                   ),
                                   //////////////////
                                   Column(
@@ -232,26 +179,25 @@ class _AddRecordsState extends State<AddRecords> {
                                         'Prescription',
                                         style: TextStyle(
                                             color: Colors.green,
-                                            fontSize: 60.sp),
+                                            fontSize: 14.sp),
                                       )
                                     ],
                                   ),
-                                  const SizedBox(
-                                    width: 50,
+                                  SizedBox(
+                                    width: 25.w,
                                   ),
                                   ///////////
                                   Column(
                                     children: [
                                       const Icon(
                                         Icons.receipt,
-                                        color: Color.fromARGB(255, 92, 88, 88),
+                                        color: Color(0xFF5C5858),
                                       ),
                                       Text(
                                         'Invoice',
                                         style: TextStyle(
-                                            color: const Color.fromARGB(
-                                                255, 92, 88, 88),
-                                            fontSize: 60.sp),
+                                            color: const Color(0xFF5C5858),
+                                            fontSize: 14.sp),
                                       )
                                     ],
                                   ),
@@ -262,13 +208,13 @@ class _AddRecordsState extends State<AddRecords> {
                         ],
                       ),
 
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       const Divider(),
                       //////////////////
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -278,146 +224,114 @@ class _AddRecordsState extends State<AddRecords> {
                             children: [
                               Text('Record created on',
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 60.sp)),
-                              const SizedBox(
-                                height: 10,
+                                      color: Colors.black, fontSize: 10.sp)),
+                              SizedBox(
+                                height: 5.h,
                               ),
                               Text(
                                 '27 Feb, 2021',
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 60.sp),
+                                    fontSize: 14.sp),
                               )
                             ],
                           ),
-                          const Icon(Icons.border_color_outlined)
+                          const Icon(Icons.colorize_outlined)
                         ],
                       ),
-                      const SizedBox(
-                        height: 15,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       const Divider(),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 10.h,
                       ),
-                      Container(
-                        width: 370.w,
-                        height: 50.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5).w,
-                            color: mainColor.withOpacity(1)),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              _showAddRecordsDialog(context);
-                            },
-                            child: Text(
-                              'Upload record',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 60.sp),
-                            ),
-                          ),
-                        ),
-                      )
+                      Buttons(
+                          Cwidth: 130.w,
+                          fontSize: 14.sp,
+                          text: 'Upload record',
+                          onPressed: () {
+                            _showAddRecordsDialog(context);
+                          })
                     ],
                   ),
                 ),
               )
             ],
           ),
-        ]),
-      ),
+        ),
+      ]),
     );
   }
 }
 /////////////////////////showing nextpage dialog box/////////////////
 
 void _showAddRecordsDialog(BuildContext context) {
-  showDialog(
+  showModalBottomSheet(
     context: context,
+    isScrollControlled: true, // Makes the modal size as per content
     builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          'Add a record',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 60.sp,
-              fontWeight: FontWeight.bold),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+        child: Wrap(
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AllRecords()));
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.camera_alt_rounded,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Add a Record',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold,
                   ),
-                  SizedBox(width: 30.w),
-                  Text(
-                    'Take a photo',
-                    style: TextStyle(color: Colors.black, fontSize: 60.sp),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            /////
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AllRecords()));
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.photo_outlined,
+                ),
+                SizedBox(height: 15.h),
+                GestureDetector(
+                  onTap: () => navPush(context, const AllRecords()),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.camera_alt_rounded, color: Colors.black),
+                      SizedBox(width: 10.w),
+                      Text(
+                        'Take a photo',
+                        style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 30.w),
-                  Text(
-                    'upload from gallery',
-                    style: TextStyle(color: Colors.black, fontSize: 60.sp),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            ////
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AllRecords()));
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.picture_as_pdf_outlined,
+                ),
+                SizedBox(height: 15.h),
+                GestureDetector(
+                  onTap: () => navPush(context, const AllRecords()),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.photo_outlined, color: Colors.black),
+                      SizedBox(width: 10.w),
+                      Text(
+                        'Upload from gallery',
+                        style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 30.w),
-                  Text(
-                    'Upload files',
-                    style: TextStyle(color: Colors.black, fontSize: 60.sp),
-                  )
-                ],
-              ),
+                ),
+                SizedBox(height: 15.h),
+                GestureDetector(
+                  onTap: () => navPush(context, const AllRecords()),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.picture_as_pdf_outlined,
+                          color: Colors.black),
+                      SizedBox(width: 10.w),
+                      Text(
+                        'Upload files',
+                        style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
           ],
         ),
       );

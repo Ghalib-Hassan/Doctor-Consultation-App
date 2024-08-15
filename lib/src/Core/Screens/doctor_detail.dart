@@ -1,7 +1,10 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:doctor_consultation/src/Core/Screens/appointment1.dart';
-import 'package:doctor_consultation/src/Core/popular_doctor.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/fav_icon.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,92 +21,19 @@ class _DoctorDetailState extends State<DoctorDetail> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Positioned(
-            top: -30,
-            left: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
+          const Backgroundsplash(),
           Column(children: [
-            Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PopularDoctor()));
-                            },
-                            child: Container(
-                              height: 40.h,
-                              width: 100.w,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(
-                                      const Radius.circular(20).w)),
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(Icons.arrow_back_ios),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30.h,
-                          ),
-                          Text(
-                            'Doctor Details',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 80.sp),
-                          ),
-                        ],
-                      ),
-                      const Icon(
-                        Icons.search,
-                      ),
-                    ])),
+            AppbarPop(
+              sizedWidth: 10.w,
+              title: 'Doctor Details',
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Container(
-                width: 1100.w,
-                height: 170.h,
+                width: 195.w,
+                height: 130.h,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(const Radius.circular(20).w),
+                    borderRadius: BorderRadius.all(const Radius.circular(5).w),
                     color: Colors.white.withOpacity(1)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -115,17 +45,14 @@ class _DoctorDetailState extends State<DoctorDetail> {
                           children: [
                             ClipRRect(
                               borderRadius:
-                                  BorderRadius.all(const Radius.circular(20).w),
+                                  BorderRadius.all(const Radius.circular(5).w),
                               child: Image.asset(
                                 alignment: Alignment.topCenter,
                                 'asset/Popular-Doctors/one-2.jpeg',
-                                width: 400.w,
-                                height: 100.h,
+                                width: 60.w,
+                                height: 65.h,
                                 fit: BoxFit.cover,
                               ),
-                            ),
-                            SizedBox(
-                              width: 15.w,
                             ),
                             Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,24 +62,24 @@ class _DoctorDetailState extends State<DoctorDetail> {
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 70.sp),
+                                        fontSize: 13.sp),
                                   ),
                                   SizedBox(
-                                    height: 10.h,
+                                    height: 3.h,
                                   ),
                                   Text(
                                     'Specialist Cardiologist ',
                                     style: TextStyle(
                                         color: const Color(0x00677294)
                                             .withOpacity(1),
-                                        fontSize: 50.sp),
+                                        fontSize: 9.sp),
                                   ),
                                   SizedBox(
-                                    height: 10.h,
+                                    height: 3.h,
                                   ),
                                   Row(children: [
                                     RatingBar(
-                                      size: 20,
+                                      size: 25,
                                       filledIcon: Icons.star,
                                       emptyIcon: Icons.star_border,
                                       onRatingChanged: (value) =>
@@ -161,45 +88,29 @@ class _DoctorDetailState extends State<DoctorDetail> {
                                       maxRating: 5,
                                     ),
                                     SizedBox(
-                                      width: 70.w,
+                                      width: 3.w,
                                     ),
                                     Text(
                                       '\$ 28.00/hr',
                                       style: TextStyle(
                                           color: const Color(0x00677294)
                                               .withOpacity(1),
-                                          fontSize: 45.sp),
+                                          fontSize: 8.sp),
                                     )
                                   ])
                                 ]),
-                            const favIcon()
+                            const FavIcon()
                           ]),
                       SizedBox(
                         height: 10.h,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Appointment()));
-                        },
-                        child: Container(
-                          width: 350.w,
-                          height: 40.h,
-                          decoration: BoxDecoration(
-                              color: mainColor.withOpacity(1),
-                              borderRadius: BorderRadius.all(
-                                  const Radius.circular(20).w)),
-                          child: Center(
-                            child: Text(
-                              'Book Now',
-                              style: TextStyle(
-                                  fontSize: 60.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      )
+                      Buttons(
+                          Cwidth: 100.w,
+                          text: 'Book Now',
+                          fontSize: 12.sp,
+                          onPressed: () {
+                            navPush(context, const Appointment());
+                          })
                     ],
                   ),
                 ),
@@ -209,10 +120,10 @@ class _DoctorDetailState extends State<DoctorDetail> {
               height: 20.h,
             ),
             Container(
-              width: 1100.w,
-              height: 100.h,
+              width: 190.w,
+              height: 60.h,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(const Radius.circular(20).w),
+                  borderRadius: BorderRadius.all(const Radius.circular(5).w),
                   color: Colors.white.withOpacity(1)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -224,14 +135,14 @@ class _DoctorDetailState extends State<DoctorDetail> {
                       Text(
                         '100',
                         style: TextStyle(
-                            fontSize: 80.sp,
+                            fontSize: 14.sp,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Running',
                         style: TextStyle(
-                            fontSize: 40.sp,
+                            fontSize: 10.sp,
                             color: const Color(0x00677294).withOpacity(1)),
                       )
                     ],
@@ -242,14 +153,14 @@ class _DoctorDetailState extends State<DoctorDetail> {
                       Text(
                         '500',
                         style: TextStyle(
-                            fontSize: 80.sp,
+                            fontSize: 14.sp,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Ongoing',
                         style: TextStyle(
-                            fontSize: 40.sp,
+                            fontSize: 10.sp,
                             color: const Color(0x00677294).withOpacity(1)),
                       )
                     ],
@@ -260,14 +171,14 @@ class _DoctorDetailState extends State<DoctorDetail> {
                       Text(
                         '700',
                         style: TextStyle(
-                            fontSize: 80.sp,
+                            fontSize: 14.sp,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Patient',
                         style: TextStyle(
-                            fontSize: 40.sp,
+                            fontSize: 10.sp,
                             color: const Color(0x00677294).withOpacity(1)),
                       )
                     ],
@@ -279,22 +190,22 @@ class _DoctorDetailState extends State<DoctorDetail> {
               height: 40.h,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 25.0),
+              padding: const EdgeInsets.only(left: 25.0, bottom: 10),
               child: Row(
                 children: [
                   Text(
                     'Services',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 80.sp,
+                        fontSize: 18.sp,
                         color: Colors.black),
                   ),
                 ],
               ),
             ),
             Container(
-              width: 1100.w,
-              height: 100.h,
+              width: 190.w,
+              height: 60.h,
               color: Colors.white.withOpacity(1),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -303,67 +214,40 @@ class _DoctorDetailState extends State<DoctorDetail> {
                   children: [
                     Text(
                       '1.   Patient care should be the number one priority.',
-                      style: TextStyle(color: Colors.black, fontSize: 50.sp),
+                      style: TextStyle(color: Colors.black, fontSize: 9.sp),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 5.h,
                     ),
                     Text(
                       '2.   If you run your practiceyou know how frustrating.',
-                      style: TextStyle(color: Colors.black, fontSize: 50.sp),
+                      style: TextStyle(color: Colors.black, fontSize: 9.sp),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 5.h,
                     ),
                     Text(
                       '3.   That’s why some of appointment reminder system.',
-                      style: TextStyle(color: Colors.black, fontSize: 50.sp),
+                      style: TextStyle(color: Colors.black, fontSize: 9.sp),
                     ),
                   ],
                 ),
               ),
             ),
             SizedBox(
-              height: 20.h,
+              height: 8.h,
             ),
             ClipRRect(
-              borderRadius: BorderRadius.all(const Radius.circular(20).w),
+              borderRadius: BorderRadius.all(const Radius.circular(5).w),
               child: Image.asset(
-                height: 250.h,
-                width: 1100.w,
+                height: 180.h,
+                width: 190.w,
                 'asset/map.png',
                 fit: BoxFit.cover,
               ),
             )
           ]),
         ],
-      ),
-    );
-  }
-}
-
-class favIcon extends StatefulWidget {
-  const favIcon({
-    super.key,
-  });
-
-  @override
-  State<favIcon> createState() => _favIconState();
-}
-
-class _favIconState extends State<favIcon> {
-  bool fav = false;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          fav = !fav;
-        });
-      },
-      child: Icon(
-        fav ? Icons.favorite : Icons.favorite_outline,
-        color: fav ? Colors.red : Colors.black,
       ),
     );
   }

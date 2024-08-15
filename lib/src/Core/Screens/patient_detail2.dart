@@ -1,14 +1,17 @@
-import 'package:doctor_consultation/src/Core/Screens/patient_detail1.dart';
 import 'package:doctor_consultation/src/Core/Screens/settings.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Page4 extends StatefulWidget {
-  const Page4({super.key});
+class PatientDetail02 extends StatefulWidget {
+  const PatientDetail02({super.key});
 
   @override
-  State<Page4> createState() => _Page4State();
+  State<PatientDetail02> createState() => _PatientDetail02State();
 }
 
 final List<String> Months = [
@@ -67,522 +70,480 @@ String selectedMonth = 'January';
 String selectedYear = '2024';
 int selectedGender = 0;
 
-class _Page4State extends State<Page4> {
+class _PatientDetail02State extends State<PatientDetail02> {
+  int currentStep = 0;
+
+  void updateStep(int step) {
+    setState(() {
+      currentStep = step;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(children: [
-      Positioned(
-        top: 750,
-        right: -60,
-        child: Container(
-          width: 80.w,
-          height: 80.h,
-          decoration: BoxDecoration(
-              color: splashColor.withOpacity(0.1),
-              borderRadius: BorderRadius.all(const Radius.circular(250).w),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 100,
-                    spreadRadius: 150,
-                    color: splashColor.withOpacity(.7))
-              ]),
-        ),
-      ),
-      Positioned(
-        top: -30,
-        left: -60,
-        child: Container(
-          width: 80.w,
-          height: 80.h,
-          decoration: BoxDecoration(
-              color: splashColor.withOpacity(0.1),
-              borderRadius: BorderRadius.all(const Radius.circular(250).w),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 100,
-                    spreadRadius: 150,
-                    color: splashColor.withOpacity(.7))
-              ]),
-        ),
-      ),
-      Column(children: [
-        Padding(
-            padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-            child: Row(children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Page03()));
-                },
-                child: Container(
-                  height: 40.h,
-                  width: 100.w,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.all(const Radius.circular(20).w)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back_ios),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 80.w,
-              ),
-              Text(
-                'Patient Details',
-                style: TextStyle(
-                    fontSize: 80.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              )
-            ])),
-        const SizedBox(
-          height: 15,
-        ),
-        Center(
-          child: Container(
-            height: 50,
-            width: 350,
+      const Backgroundsplash(),
+      SingleChildScrollView(
+        child: Column(children: [
+          AppbarPop(
+            sizedWidth: 10.w,
+            title: 'Patient Details',
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            height: 50.h,
+            width: 190.w,
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                color: Colors.white, borderRadius: BorderRadius.circular(15)),
             child: Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'Step 1/4',
+                    'Step $currentStep/5',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 70.sp),
+                        fontSize: 10.sp),
                   ),
-                  Image.asset('asset/Hassam/step.png')
+                  SizedBox(
+                    width: 3.w,
+                  ),
+                  Expanded(
+                    child: LinearProgressIndicator(
+                      value: currentStep / 5,
+                      backgroundColor: Colors.grey[300],
+                      color: mainColor.withOpacity(1),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: 580,
-          width: 350,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), color: Colors.white),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 200, top: 25),
-                child: Text('Patient Name',
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            height: 390.h,
+            width: 190.w,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15), color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Patient Name',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 14.sp)),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(fontSize: 10.sp, color: Colors.black),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            const Radius.circular(3).w,
+                          ),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 15),
+                        focusColor: Colors.black,
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                            fontSize: 10.sp,
+                            color: const Color(0x00677294).withOpacity(1),
+                            fontWeight: FontWeight.w300),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            const Radius.circular(3).w,
+                          ),
+                        ),
+                      ),
+                      onChanged: (value) {
+                        if (value.isNotEmpty) updateStep(1);
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    'Age',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 70.sp)),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 50.sp, color: Colors.black),
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        const Radius.circular(40).w,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 25),
-                    focusColor: Colors.black,
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Abdullah Memon',
-                    hintStyle: TextStyle(
-                        fontSize: 50.sp,
-                        color: const Color(0x00677294).withOpacity(1),
-                        fontWeight: FontWeight.w300),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        const Radius.circular(40).w,
-                      ),
-                    ),
+                        fontSize: 14.sp),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 270, top: 20, bottom: 10),
-                child: Text(
-                  'Age',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 70.sp),
-                ),
-              ),
-              Row(
-                children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 20),
-                    child: GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ListView.builder(
-                              itemCount: Days.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text(
-                                    Days[index],
-                                    style: TextStyle(fontSize: 50.sp),
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      selectedDay = Days[index];
-                                    });
-                                    Navigator.pop(context);
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return ListView.builder(
+                                  itemCount: Days.length,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      title: Text(
+                                        Days[index],
+                                        style: TextStyle(fontSize: 10.sp),
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          selectedDay = Days[index];
+                                        });
+                                        Navigator.pop(context);
+                                        updateStep(2);
+                                      },
+                                    );
                                   },
                                 );
                               },
                             );
                           },
-                        );
-                      },
-                      child: Container(
-                        height: 60,
-                        width: 90,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black38),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                selectedDay.isNotEmpty ? selectedDay : 'DAY',
-                                style: TextStyle(
-                                    color: Colors.black38, fontSize: 50.sp),
-                              ),
-                              const Icon(Icons.keyboard_arrow_down)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(right: 10, left: 14, bottom: 20),
-                    child: GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return ListView.builder(
-                                  itemCount: Months.length,
-                                  itemBuilder: (context, index) {
-                                    return ListTile(
-                                      title: Text(
-                                        Months[index],
-                                        style: TextStyle(fontSize: 50.sp),
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          selectedMonth = Months[index];
-                                        });
-                                        Navigator.pop(context);
-                                      },
-                                    );
-                                  });
-                            });
-                      },
-                      child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black38),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 5,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                selectedMonth.isNotEmpty
-                                    ? selectedMonth
-                                    : 'MONTH',
-                                style: TextStyle(
-                                    color: Colors.black38, fontSize: 50.sp),
-                              ),
-                              const Icon(Icons.keyboard_arrow_down_outlined)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, left: 8),
-                    child: GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return ListView.builder(
-                                  itemCount: Years.length,
-                                  itemBuilder: (context, index) {
-                                    return ListTile(
-                                      title: Text(
-                                        Years[index],
-                                        style: TextStyle(fontSize: 50.sp),
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          selectedYear = Years[index];
-                                        });
-                                        Navigator.pop(context);
-                                      },
-                                    );
-                                  });
-                            });
-                      },
-                      child: Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black38),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                selectedYear.isNotEmpty ? selectedYear : 'Year',
-                                style: TextStyle(
-                                    color: Colors.black38, fontSize: 50.sp),
-                              ),
+                          child: Container(
+                            height: 40.h,
+                            width: 55.w,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black38),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                  selectedDay.isNotEmpty ? selectedDay : 'DAY',
+                                  style: TextStyle(
+                                      color: Colors.black38, fontSize: 8.sp),
+                                ),
+                                const Icon(Icons.keyboard_arrow_down)
+                              ],
                             ),
-                            const Icon(Icons.keyboard_arrow_down_rounded)
-                          ],
+                          ),
                         ),
-                      ),
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ListView.builder(
+                                      itemCount: Months.length,
+                                      itemBuilder: (context, index) {
+                                        return ListTile(
+                                          title: Text(
+                                            Months[index],
+                                            style: TextStyle(fontSize: 10.sp),
+                                          ),
+                                          onTap: () {
+                                            setState(() {
+                                              selectedMonth = Months[index];
+                                            });
+                                            Navigator.pop(context);
+                                            updateStep(2);
+                                          },
+                                        );
+                                      });
+                                });
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 55.w,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black38),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                  selectedMonth.isNotEmpty
+                                      ? selectedMonth
+                                      : 'MONTH',
+                                  style: TextStyle(
+                                      color: Colors.black38, fontSize: 8.sp),
+                                ),
+                                const Icon(Icons.keyboard_arrow_down)
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ListView.builder(
+                                      itemCount: Years.length,
+                                      itemBuilder: (context, index) {
+                                        return ListTile(
+                                          title: Text(
+                                            Years[index],
+                                            style: TextStyle(fontSize: 10.sp),
+                                          ),
+                                          onTap: () {
+                                            setState(() {
+                                              selectedYear = Years[index];
+                                            });
+                                            Navigator.pop(context);
+                                            updateStep(2);
+                                          },
+                                        );
+                                      });
+                                });
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 55.w,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black38),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                  selectedYear.isNotEmpty
+                                      ? selectedYear
+                                      : 'YEAR',
+                                  style: TextStyle(
+                                      color: Colors.black38, fontSize: 8.sp),
+                                ),
+                                const Icon(Icons.keyboard_arrow_down)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 240, bottom: 10),
-                  child: Text(
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
                     'Gender',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 70.sp),
+                        fontSize: 14.sp),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedGender = 1;
-                        });
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black38),
-                            borderRadius: BorderRadius.circular(50),
-                            color: selectedGender == 1
-                                ? Colors.black
-                                : Colors.transparent),
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedGender = 1;
+                            });
+                            updateStep(3);
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black38),
+                                borderRadius: BorderRadius.circular(50),
+                                color: selectedGender == 1
+                                    ? mainColor.withOpacity(1)
+                                    : Colors.transparent),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          'Male',
+                          style: TextStyle(
+                              color: const Color(0x00677294).withOpacity(1),
+                              fontSize: 10.sp),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedGender = 2;
+                            });
+                            updateStep(3);
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black38),
+                                borderRadius: BorderRadius.circular(50),
+                                color: selectedGender == 2
+                                    ? mainColor.withOpacity(1)
+                                    : Colors.transparent),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          'Female',
+                          style: TextStyle(
+                              color: const Color(0x00677294).withOpacity(1),
+                              fontSize: 10.sp),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedGender = 3;
+                            });
+                            updateStep(3);
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black38),
+                                borderRadius: BorderRadius.circular(50),
+                                color: selectedGender == 3
+                                    ? mainColor.withOpacity(1)
+                                    : Colors.transparent),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          'Others',
+                          style: TextStyle(
+                              color: const Color(0x00677294).withOpacity(1),
+                              fontSize: 10.sp),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Male',
-                      style: TextStyle(color: Colors.black38, fontSize: 50.sp),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedGender = 2;
-                        });
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black38),
-                            borderRadius: BorderRadius.circular(50),
-                            color: selectedGender == 2
-                                ? Colors.black
-                                : Colors.transparent),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Female',
-                      style: TextStyle(color: Colors.black38, fontSize: 50.sp),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedGender = 3;
-                        });
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black38),
-                            borderRadius: BorderRadius.circular(50),
-                            color: selectedGender == 3
-                                ? Colors.black
-                                : Colors.transparent),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Others',
-                      style: TextStyle(color: Colors.black38, fontSize: 50.sp),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 170, top: 20),
-                  child: Text(
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
                     'Mobile Number',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 70.sp,
+                        fontSize: 14.sp,
                         color: Colors.black),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 50.sp, color: Colors.black),
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        const Radius.circular(40).w,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(fontSize: 10.sp, color: Colors.black),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            const Radius.circular(5).w,
+                          ),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 15),
+                        focusColor: Colors.black,
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelText: 'Enter Your Phone Number',
+                        labelStyle: TextStyle(
+                            fontSize: 10.sp,
+                            color: const Color(0x00677294).withOpacity(1),
+                            fontWeight: FontWeight.w300),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            const Radius.circular(5).w,
+                          ),
+                        ),
                       ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 25),
-                    focusColor: Colors.black,
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Enter Your Phone Number',
-                    hintStyle: TextStyle(
-                        fontSize: 50.sp,
-                        color: const Color(0x00677294).withOpacity(1),
-                        fontWeight: FontWeight.w300),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        const Radius.circular(40).w,
-                      ),
+                      onChanged: (value) {
+                        if (value.isNotEmpty) updateStep(4);
+                      },
                     ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 250, top: 20),
-                child: Container(
-                  child: Text(
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
                     'Email',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 70.sp),
+                        fontSize: 14.sp),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 50.sp, color: Colors.black),
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        const Radius.circular(40).w,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(fontSize: 10.sp, color: Colors.black),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            const Radius.circular(5).w,
+                          ),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 15),
+                        focusColor: Colors.black,
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelText: 'Enter Your Email',
+                        labelStyle: TextStyle(
+                            fontSize: 10.sp,
+                            color: const Color(0x00677294).withOpacity(1),
+                            fontWeight: FontWeight.w300),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            const Radius.circular(5).w,
+                          ),
+                        ),
                       ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 25),
-                    focusColor: Colors.black,
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Enter Your Email',
-                    hintStyle: TextStyle(
-                        fontSize: 50.sp,
-                        color: const Color(0x00677294).withOpacity(1),
-                        fontWeight: FontWeight.w300),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        const Radius.circular(40).w,
-                      ),
+                      onChanged: (value) {
+                        if (value.isNotEmpty) updateStep(5);
+                      },
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-        SizedBox(
-          height: 20.h,
-        ),
-        Container(
-          height: 50,
-          width: 200,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.greenAccent,
+          SizedBox(
+            height: 20.h,
           ),
-          child: TextButton(
+          Buttons(
+              Cwidth: 120.w,
+              text: 'Continue',
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Page06()));
-              },
-              child: Text(
-                'Continue',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 70.sp,
-                    fontWeight: FontWeight.bold),
-              )),
-        )
-      ]),
+                if (currentStep == 5) {
+                  navPush(context, const Settings());
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                      'Please fill all the fields!',
+                      style: TextStyle(
+                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                    ),
+                    backgroundColor: mainColor.withOpacity(1),
+                  ));
+                }
+              })
+        ]),
+      )
     ]));
   }
 }

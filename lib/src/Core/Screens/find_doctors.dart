@@ -1,6 +1,10 @@
 import 'package:doctor_consultation/src/Core/Screens/book_now1.dart';
-import 'package:doctor_consultation/src/Core/home_screen.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/fav_icon.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,121 +46,66 @@ class _FindDoctorsState extends State<FindDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Stack(children: [
-        Positioned(
-          top: 750,
-          right: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
+        body: Stack(children: [
+      const Backgroundsplash(),
+      SingleChildScrollView(
+        child: Column(children: [
+          AppbarPop(
+            sizedWidth: 10.w,
+            title: 'Find Doctors',
           ),
-        ),
-        Positioned(
-          top: -30,
-          left: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
-        Column(children: [
-          Padding(
-              padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-              child: Row(children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  },
-                  child: Container(
-                    height: 40.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.all(const Radius.circular(20).w)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.arrow_back_ios),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 80.w,
-                ),
-                Text(
-                  'Find Doctors',
-                  style: TextStyle(
-                      fontSize: 80.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                )
-              ])),
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: TextField(
               keyboardType: TextInputType.text,
-              style: TextStyle(fontSize: 50.sp, color: Colors.black),
+              style: TextStyle(fontSize: 13.sp, color: Colors.black),
               decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    const Radius.circular(20).w,
-                  ),
-                ),
                 contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 focusColor: Colors.black,
                 filled: true,
                 fillColor: Colors.white,
-                prefixIcon: const Icon(
-                  Icons.search,
-                ),
-                suffixIcon: const Icon(
-                  Icons.cancel_outlined,
-                ),
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: const Icon(Icons.cancel_outlined),
                 hintText: 'Dentist',
-                hintStyle: TextStyle(fontSize: 50.sp, color: Colors.black),
+                hintStyle: TextStyle(fontSize: 10.sp, color: Colors.black),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    const Radius.circular(20).w,
-                  ),
+                  borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                  borderSide: const BorderSide(color: Colors.white, width: 0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                  borderSide: const BorderSide(color: Colors.white, width: 0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                  borderSide: const BorderSide(color: Colors.white, width: 0),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                  borderSide: const BorderSide(color: Colors.white, width: 0),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                  borderSide: const BorderSide(color: Colors.white, width: 0),
                 ),
               ),
             ),
           ),
           Container(
-              width: 1100.w,
-              height: 650.h,
+              width: 195.w,
+              height: 490.h,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(1),
-                borderRadius: BorderRadius.all(const Radius.circular(20).w),
+                borderRadius: BorderRadius.all(const Radius.circular(5).w),
               ),
               child: ListView.builder(
-                  itemCount: 4,
+                  scrollDirection: Axis.vertical,
+                  itemCount: images.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 4, bottom: 4),
                       child: Column(
                         children: [
                           Row(
@@ -165,11 +114,11 @@ class _FindDoctorsState extends State<FindDoctors> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.all(
-                                    const Radius.circular(20).w),
+                                    const Radius.circular(3).w),
                                 child: Image.asset(
                                   '${images[index]}',
-                                  width: 400.w,
-                                  height: 100.h,
+                                  width: 60.w,
+                                  height: 80.h,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -181,29 +130,29 @@ class _FindDoctorsState extends State<FindDoctors> {
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 70.sp),
+                                        fontSize: 13.sp),
                                   ),
                                   SizedBox(
-                                    height: 10.h,
+                                    height: 5.h,
                                   ),
                                   Text(
                                     'Tooths Dentist',
                                     style: TextStyle(
                                         color: mainColor.withOpacity(.9),
-                                        fontSize: 50.sp),
+                                        fontSize: 10.sp),
                                   ),
                                   SizedBox(
-                                    height: 5.h,
+                                    height: 3.h,
                                   ),
                                   Text(
                                     '${experience[index]}',
                                     style: TextStyle(
                                         color: const Color(0x00677294)
                                             .withOpacity(1),
-                                        fontSize: 50.sp),
+                                        fontSize: 9.sp),
                                   ),
                                   SizedBox(
-                                    height: 10.h,
+                                    height: 5.h,
                                   ),
                                   Row(
                                     children: [
@@ -219,12 +168,12 @@ class _FindDoctorsState extends State<FindDoctors> {
                                             style: TextStyle(
                                                 color: const Color(0x00677294)
                                                     .withOpacity(1),
-                                                fontSize: 30.sp),
+                                                fontSize: 9.sp),
                                           )
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 50.w,
+                                        width: 10.w,
                                       ),
                                       Row(
                                         children: [
@@ -238,7 +187,7 @@ class _FindDoctorsState extends State<FindDoctors> {
                                             style: TextStyle(
                                                 color: const Color(0x00677294)
                                                     .withOpacity(1),
-                                                fontSize: 30.sp),
+                                                fontSize: 9.sp),
                                           )
                                         ],
                                       ),
@@ -246,25 +195,26 @@ class _FindDoctorsState extends State<FindDoctors> {
                                   )
                                 ],
                               ),
-                              const favIcon()
+                              const FavIcon(),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Next Available',
                                     style: TextStyle(
-                                        fontSize: 50.sp,
+                                        fontSize: 12.sp,
                                         color: mainColor.withOpacity(1),
                                         fontWeight: FontWeight.bold),
                                   ),
                                   RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: 30.sp,
+                                              fontSize: 9.sp,
                                               color: const Color(0x00677294)
                                                   .withOpacity(1)),
                                           children: [
@@ -277,32 +227,16 @@ class _FindDoctorsState extends State<FindDoctors> {
                                       ]))
                                 ],
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const BookNow()));
+                              Buttons(
+                                text: 'Book Now',
+                                fontSize: 14.sp,
+                                Cwidth: 70.w,
+                                Cheight: 30.h,
+                                onPressed: () {
+                                  navPush(context, const BookNow());
                                 },
-                                child: Container(
-                                  width: 350.w,
-                                  height: 30.h,
-                                  decoration: BoxDecoration(
-                                      color: mainColor.withOpacity(1),
-                                      borderRadius: BorderRadius.all(
-                                          const Radius.circular(20).w)),
-                                  child: Center(
-                                    child: Text(
-                                      'Book Now',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 60.sp),
-                                    ),
-                                  ),
-                                ),
-                              )
+                                ButtonColor: mainColor.withOpacity(1),
+                              ),
                             ],
                           ),
                           SizedBox(
@@ -312,38 +246,8 @@ class _FindDoctorsState extends State<FindDoctors> {
                       ),
                     );
                   })),
-          SizedBox(
-            height: 20.h,
-          ),
         ]),
-      ]),
-    ));
-  }
-}
-
-class favIcon extends StatefulWidget {
-  const favIcon({
-    super.key,
-  });
-
-  @override
-  State<favIcon> createState() => _favIconState();
-}
-
-class _favIconState extends State<favIcon> {
-  bool fav = false;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          fav = !fav;
-        });
-      },
-      child: Icon(
-        fav ? Icons.favorite : Icons.favorite_outline,
-        color: fav ? Colors.red : Colors.black,
       ),
-    );
+    ]));
   }
 }

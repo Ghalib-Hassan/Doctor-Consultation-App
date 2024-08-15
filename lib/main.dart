@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
 import 'package:doctor_consultation/src/Onboarding_Screens/screen_01.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePushReplacement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'First Method',
+          title: 'Doctor Consultation',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
@@ -43,12 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(
-        const Duration(seconds: 5),
-        () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const OnboardingScreen01())));
+    Timer(const Duration(seconds: 5),
+        () => pushReplacement(context, const OnboardingScreen01()));
   }
 
   @override
@@ -56,47 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Positioned(
-            top: -30,
-            left: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
+          const Backgroundsplash(),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   'asset/main-logo.png',
-                  width: 500.w,
+                  width: 120.w,
                   height: 200.h,
                   fit: BoxFit.fill,
                 ),
@@ -104,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Doctor Hunt',
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 80.sp,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.bold),
                 ),
               ],

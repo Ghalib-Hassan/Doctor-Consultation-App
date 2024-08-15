@@ -1,7 +1,7 @@
-import 'dart:math';
 import 'package:doctor_consultation/src/Core/home_screen.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
-import 'package:doctor_consultation/src/Widgets/Custom_Widgets/Onboarding_screen_Button/button.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/onboardingSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/onboarding_button.dart';
+import 'package:doctor_consultation/src/Onboarding_Screens/screen_02.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,110 +18,75 @@ class _OnboardingScreen01State extends State<OnboardingScreen01> {
     return Scaffold(
       body: Stack(
         children: [
+          const Onboardingsplash(),
           Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Positioned(
-            top: -130,
-            left: -280,
-            child: Transform.rotate(
-              angle: pi / 3.9.w,
-              child: Container(
-                width: 450,
-                height: 450,
-                decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.all(const Radius.circular(800).w),
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          mainColor.withOpacity(1),
-                          mainColor.withOpacity(1)
-                        ])),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 50,
+            left: 30,
             top: 100,
             child: CircleAvatar(
               backgroundImage: const AssetImage(
                 'asset/onboarding01.jpg',
               ),
-              radius: 350.r,
+              radius: 110.r,
             ),
           ),
-          Center(
-            child: SizedBox(
-              width: 630.w,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 450.h,
-                  ),
-                  Text('Find Trusted Doctors',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 80.sp,
-                          fontWeight: FontWeight.bold)),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Text(
-                    'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.7),
-                      fontSize: 50.sp,
+          SafeArea(
+            child: Center(
+              child: SizedBox(
+                width: 180.w,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 320.h,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: 70.h,
-                  ),
-                  OnboardingButton(
-                    text: 'Get Started',
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const OnboardingScreen01()));
-                    },
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                          color: Colors.black.withOpacity(.5),
-                          fontSize: 70.sp,
-                          fontWeight: FontWeight.bold),
+                    Text('Find Trusted Doctors',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      height: 3.h,
                     ),
-                  ),
-                ],
+                    Text(
+                      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(.7),
+                        fontSize: 12.sp,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 60.h,
+                    ),
+                    OnboardingButton(
+                      text: 'Get Started',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const OnboardingScreen02()));
+                      },
+                      child: Text(
+                        'Skip',
+                        style: TextStyle(
+                            color: Colors.black.withOpacity(.5),
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

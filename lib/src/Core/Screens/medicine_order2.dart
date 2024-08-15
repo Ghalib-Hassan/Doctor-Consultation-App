@@ -1,5 +1,5 @@
-import 'package:doctor_consultation/src/Core/Screens/medicine_order1.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,97 +34,67 @@ class _OrderManagmentState extends State<OrderManagment> {
     return Scaffold(
       /////////////////////////////////
       body: Stack(children: [
-        Positioned(
-          top: 750,
-          right: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
-        Positioned(
-          top: -30,
-          left: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
+        const Backgroundsplash(),
         Padding(
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
             children: [
-              Padding(
-                  padding:
-                      const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                  child: Row(children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MedicineOrder()));
-                      },
-                      child: Container(
-                        height: 40.h,
-                        width: 90.w,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(const Radius.circular(10).w)),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.arrow_back_ios),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 50.w,
-                    ),
-                    Text(
-                      'Medicines orders',
-                      style: TextStyle(
-                          fontSize: 80.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    )
-                  ])),
-              SizedBox(
-                height: 30.h,
+              AppbarPop(
+                sizedWidth: 10.w,
+                title: 'Medicine Orders',
               ),
-              TextField(
-                keyboardType: TextInputType.text,
-                style: const TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    hintText: 'search',
-                    hintStyle: TextStyle(fontSize: 60.sp),
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(fontSize: 13.sp, color: Colors.black),
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 20),
+                    focusColor: Colors.black,
+                    filled: true,
+                    fillColor: Colors.white,
                     prefixIcon: const Icon(Icons.search),
-                    suffixIcon: const Icon(Icons.cancel)),
+                    suffixIcon: const Icon(Icons.cancel_outlined),
+                    hintText: 'search',
+                    hintStyle: TextStyle(fontSize: 10.sp, color: Colors.black),
+                    border: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(5).w),
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(5).w),
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(5).w),
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 0),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(5).w),
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 0),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(5).w),
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 0),
+                    ),
+                  ),
+                ),
               ),
               ///////////////////////////////////////
-              SizedBox(
-                height: 20.h,
-              ),
 
               Expanded(
                 child: GridView.builder(
@@ -138,35 +108,33 @@ class _OrderManagmentState extends State<OrderManagment> {
                       width: 100.w,
                       height: 100.h,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10).w,
+                        borderRadius: BorderRadius.circular(5).w,
                         color: Colors.white,
-                        // border: Border.all()
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: 300.w,
-                            height: 100.h,
+                            width: 55.w,
+                            height: 80.h,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(250).w,
-                              color: const Color(0xC6EFE5C2).withOpacity(.7),
-                              // border: Border.all()
+                              color: const Color(0x00c6efe5).withOpacity(.7),
                             ),
                             child: Image.asset(
                               images[index],
-                              scale: 6,
+                              scale: 4,
                               color: const Color(0x000ebe7f).withOpacity(1),
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           Text(
                             text[index],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 50.sp,
+                                fontSize: 10.sp,
                                 color: const Color(0x00677294).withOpacity(1)),
                             textAlign: TextAlign.center,
                           )

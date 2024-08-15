@@ -1,9 +1,15 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:doctor_consultation/src/Core/Screens/appointment02.dart';
-import 'package:doctor_consultation/src/Core/Screens/doctor_detail.dart';
 import 'package:doctor_consultation/src/Core/favourite_screen.dart';
 import 'package:doctor_consultation/src/Core/home_screen.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/fav_icon.dart';
+import 'package:doctor_consultation/src/Feature/Auth_Screens/signup.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
+import 'package:doctor_consultation/src/Utils/navigatePushReplacement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
@@ -29,87 +35,22 @@ class _AppointmentState extends State<Appointment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(children: [
-          Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
+      body: Stack(children: [
+        const Backgroundsplash(),
+        SingleChildScrollView(
+          child: Column(children: [
+            AppbarPop(
+              title: 'Appointment',
+              sizedWidth: 10.w,
             ),
-          ),
-          Positioned(
-            top: -30,
-            left: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Column(children: [
-            Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const DoctorDetail()));
-                      },
-                      child: Container(
-                        height: 40.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(const Radius.circular(20).w)),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.arrow_back_ios),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 30.h,
-                    ),
-                    Text(
-                      'Appointment',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 80.sp),
-                    ),
-                  ],
-                )),
             Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Container(
-                    width: 1100.w,
-                    height: 120.h,
+                    width: 195.w,
+                    height: 78.h,
                     decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.all(const Radius.circular(20).w),
+                            BorderRadius.all(const Radius.circular(5).w),
                         color: Colors.white.withOpacity(1)),
                     child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -120,17 +61,14 @@ class _AppointmentState extends State<Appointment> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.all(
-                                      const Radius.circular(20).w),
+                                      const Radius.circular(5).w),
                                   child: Image.asset(
                                     alignment: Alignment.topCenter,
                                     'asset/Popular-Doctors/one-2.jpeg',
-                                    width: 400.w,
-                                    height: 100.h,
+                                    width: 60.w,
+                                    height: 65.h,
                                     fit: BoxFit.cover,
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 15.w,
                                 ),
                                 Column(
                                     crossAxisAlignment:
@@ -141,24 +79,24 @@ class _AppointmentState extends State<Appointment> {
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 70.sp),
+                                            fontSize: 13.sp),
                                       ),
                                       SizedBox(
-                                        height: 10.h,
+                                        height: 3.h,
                                       ),
                                       Text(
                                         'Specialist Cardiologist ',
                                         style: TextStyle(
                                             color: const Color(0x00677294)
                                                 .withOpacity(1),
-                                            fontSize: 50.sp),
+                                            fontSize: 9.sp),
                                       ),
                                       SizedBox(
-                                        height: 10.h,
+                                        height: 3.h,
                                       ),
                                       Row(children: [
                                         RatingBar(
-                                          size: 20,
+                                          size: 25,
                                           filledIcon: Icons.star,
                                           emptyIcon: Icons.star_border,
                                           onRatingChanged: (value) =>
@@ -167,22 +105,22 @@ class _AppointmentState extends State<Appointment> {
                                           maxRating: 5,
                                         ),
                                         SizedBox(
-                                          width: 70.w,
+                                          width: 3.w,
                                         ),
                                         Text(
                                           '\$ 28.00/hr',
                                           style: TextStyle(
                                               color: const Color(0x00677294)
                                                   .withOpacity(1),
-                                              fontSize: 45.sp),
+                                              fontSize: 8.sp),
                                         )
                                       ])
                                     ]),
-                                const favIcon()
+                                const FavIcon()
                               ]),
                         ])))),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 50),
+              padding: const EdgeInsets.only(left: 10.0, top: 50),
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -190,42 +128,40 @@ class _AppointmentState extends State<Appointment> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 80.sp),
+                      fontSize: 18.sp),
                 ),
               ),
             ),
             SizedBox(
-              height: 50.h,
+              height: 10.h,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40.0),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Patient Name',
-                  style: TextStyle(
-                      color: const Color(0x00677294).withOpacity(1),
-                      fontSize: 60.sp),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 50.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40.0),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Contact Number',
-                  style: TextStyle(
-                      color: const Color(0x00677294).withOpacity(1),
-                      fontSize: 60.sp),
-                ),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: TextFormField(
+                style: TextStyle(color: Colors.black, fontSize: 13.sp),
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    labelText: 'Patient Name',
+                    labelStyle: TextStyle(
+                        color: const Color(0x00677294).withOpacity(1),
+                        fontSize: 13.sp)),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: TextFormField(
+                keyboardType: TextInputType.phone,
+                style: TextStyle(color: Colors.black, fontSize: 13.sp),
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    labelText: 'Contact Number',
+                    labelStyle: TextStyle(
+                        color: const Color(0x00677294).withOpacity(1),
+                        fontSize: 13.sp)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, top: 50),
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -233,14 +169,14 @@ class _AppointmentState extends State<Appointment> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 80.sp),
+                      fontSize: 18.sp),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                height: 220.h,
+                height: 140.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 4,
@@ -251,34 +187,35 @@ class _AppointmentState extends State<Appointment> {
                         children: [
                           ClipRRect(
                             borderRadius:
-                                BorderRadius.all(const Radius.circular(20).w),
+                                BorderRadius.all(const Radius.circular(5).w),
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
                                 Image.asset(
                                   '${images[index]}',
-                                  width: 445.w,
-                                  height: 170.h,
-                                  fit: BoxFit.cover,
+                                  width: 60.w,
+                                  height: 100.h,
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.topCenter,
                                 ),
                                 if (index == 0)
                                   SizedBox(
-                                    width: 445.w,
-                                    height: 170.h,
+                                    width: 60.w,
+                                    height: 80.h,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(
                                           Icons.add,
-                                          size: 60,
+                                          size: 30,
                                           color: mainColor.withOpacity(1),
                                         ),
                                         Text(
                                           'Add',
                                           style: TextStyle(
                                             color: mainColor.withOpacity(1),
-                                            fontSize: 70.sp,
+                                            fontSize: 12.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -295,7 +232,7 @@ class _AppointmentState extends State<Appointment> {
                                 '${names[index - 1]}',
                                 style: TextStyle(
                                   color: const Color(0x00677294).withOpacity(1),
-                                  fontSize: 60.sp,
+                                  fontSize: 14.sp,
                                 ),
                               ),
                             ),
@@ -306,28 +243,18 @@ class _AppointmentState extends State<Appointment> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: mainColor.withOpacity(1),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 340.w, vertical: 17),
-                  shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.all(const Radius.circular(13).w))),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Appointment02()));
-              },
-              child: Text(
-                'Next',
-                style: TextStyle(color: Colors.white, fontSize: 70.sp),
-              ),
+            Buttons(
+                text: 'Next',
+                Cwidth: 150.w,
+                onPressed: () {
+                  navPush(context, const Appointment02());
+                }),
+            SizedBox(
+              height: 20.h,
             )
-          ])
-        ]),
-      ),
+          ]),
+        )
+      ]),
       bottomNavigationBar: MoltenBottomNavigationBar(
         domeCircleColor: mainColor.withOpacity(1),
         selectedIndex: _selectedIndex,
@@ -337,13 +264,11 @@ class _AppointmentState extends State<Appointment> {
           setState(() {
             _selectedIndex = clickedIndex;
             if (clickedIndex == 0) {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+              pushReplacement(context, const HomeScreen());
             } else if (clickedIndex == 1) {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const FavouriteScreen()));
+              pushReplacement(context, const FavouriteScreen());
+            } else if (clickedIndex == 3) {
+              pushReplacement(context, const Signup());
             }
           });
         },

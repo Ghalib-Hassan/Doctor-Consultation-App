@@ -1,6 +1,8 @@
-import 'package:doctor_consultation/src/Core/Screens/diagnostic_test1.dart';
 import 'package:doctor_consultation/src/Core/Screens/patient_detail1.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -89,77 +91,14 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(children: [
-          Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
+      body: Stack(children: [
+        const Backgroundsplash(),
+        SingleChildScrollView(
+          child: Column(children: [
+            AppbarPop(
+              sizedWidth: 10.w,
+              title: 'Diagnostics Tests',
             ),
-          ),
-          Positioned(
-            top: -30,
-            left: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Column(children: [
-            Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                child: Row(children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Diagnostic()));
-                    },
-                    child: Container(
-                      height: 40.h,
-                      width: 100.w,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(20).w)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.arrow_back_ios),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80.w,
-                  ),
-                  Text(
-                    'Diagnostics Tests',
-                    style: TextStyle(
-                        fontSize: 80.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  )
-                ])),
             SizedBox(
               height: 20.h,
             ),
@@ -170,7 +109,7 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 100.sp),
+                    fontSize: 15.sp),
               ),
             ),
             Padding(
@@ -181,14 +120,14 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                     'Upto 45% off + get 10% healthcash back',
                     style: TextStyle(
                         color: const Color(0x000ebe7f).withOpacity(1),
-                        fontSize: 60.sp,
+                        fontSize: 10.sp,
                         fontWeight: FontWeight.w300),
                   ),
                 ],
               ),
             ),
             SizedBox(
-                height: 300.h,
+                height: 180.h,
                 child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
@@ -216,41 +155,41 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight),
                                       borderRadius: BorderRadius.all(
-                                          const Radius.circular(30).w)),
+                                          const Radius.circular(5).w)),
                                 ),
                                 Positioned(
                                   right: -30,
-                                  top: 7,
+                                  top: 17,
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * .2,
-                                    height: 80.h,
+                                    height: 50.h,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
-                                            const Radius.circular(100).w),
+                                            const Radius.circular(150).w),
                                         color: stack01[index]),
                                   ),
                                 ),
                                 Positioned(
                                   left: 10,
-                                  bottom: -40,
+                                  bottom: -30,
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * .2,
-                                    height: 80.h,
+                                    height: 50.h,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
-                                            const Radius.circular(100).w),
+                                            const Radius.circular(150).w),
                                         color: stack02[index]),
                                   ),
                                 ),
                                 Positioned(
-                                    top: -20,
-                                    left: 25,
+                                    top: 25,
+                                    left: 17,
                                     child: Image.asset(
                                       '${stack_image[index]}',
-                                      width: 150.w,
-                                      height: 150.h,
+                                      width: 28.w,
+                                      height: 28.h,
                                     ))
                               ]),
                               Expanded(
@@ -264,7 +203,7 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                         titles[index],
                                         style: TextStyle(
                                             color: Colors.black,
-                                            fontSize: 70.sp,
+                                            fontSize: 10.sp,
                                             fontWeight: FontWeight.w400),
                                         textAlign: TextAlign.left,
                                       ),
@@ -283,14 +222,14 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                     'Recommend for you',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 80.sp,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: 1600.h,
+              height: 1130.h,
               child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -300,7 +239,7 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width,
-                        height: 500.h,
+                        height: 350.h,
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.all(const Radius.circular(10).w),
@@ -314,27 +253,29 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                               Text(
                                 '${recommend[index]}',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 70.sp),
+                                    color: Colors.black,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                height: 6.h,
+                                height: 3.h,
                               ),
                               Text(
                                 '${recommend2[index]}',
                                 style: TextStyle(
                                     color:
                                         const Color(0x00677294).withOpacity(1),
-                                    fontSize: 50.sp),
+                                    fontSize: 10.sp),
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 10.h,
                               ),
                               Container(
-                                width: 350.w,
+                                width: 80.w,
                                 height: 30.h,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                        const Radius.circular(20).w),
+                                        const Radius.circular(5).w),
                                     border: Border.all(
                                         width: .8,
                                         color: const Color(0x000ebe7f)
@@ -345,24 +286,24 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                     style: TextStyle(
                                         color: const Color(0x000ebe7f)
                                             .withOpacity(1),
-                                        fontSize: 50.sp),
+                                        fontSize: 9.sp),
                                   ),
                                 ),
                               ),
                               SizedBox(
-                                height: 14.h,
+                                height: 10.h,
                               ),
                               ClipRRect(
                                 borderRadius: BorderRadius.all(
-                                    const Radius.circular(20).w),
+                                    const Radius.circular(5).w),
                                 child: Image.asset(
-                                    height: 300.h,
+                                    height: 200.h,
                                     width: MediaQuery.sizeOf(context).width,
                                     fit: BoxFit.cover,
                                     '${images[index]}'),
                               ),
                               SizedBox(
-                                height: 14.h,
+                                height: 10.h,
                               ),
                               Padding(
                                 padding:
@@ -372,15 +313,19 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             RichText(
                                                 text: TextSpan(children: [
                                               TextSpan(
                                                 text: '${span1[index]} ',
                                                 style: TextStyle(
-                                                    fontSize: 70.sp,
+                                                    fontSize: 10.sp,
                                                     color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -388,7 +333,7 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                               TextSpan(
                                                 text: '${span2[index]} ',
                                                 style: TextStyle(
-                                                    fontSize: 70.sp,
+                                                    fontSize: 10.sp,
                                                     color:
                                                         const Color(0x00677294)
                                                             .withOpacity(1),
@@ -398,7 +343,7 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                               TextSpan(
                                                 text: '${span3[index]}',
                                                 style: TextStyle(
-                                                    fontSize: 60.sp,
+                                                    fontSize: 9.sp,
                                                     color:
                                                         const Color(0x000ebe7f)
                                                             .withOpacity(1)),
@@ -409,37 +354,20 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                                         Text(
                                           '+ 10% Health cashback T&C',
                                           style: TextStyle(
-                                              fontSize: 60.sp,
+                                              fontSize: 8.sp,
                                               color: const Color(0x00677294)
                                                   .withOpacity(1)),
                                         )
                                       ],
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const Page03()));
-                                      },
-                                      child: Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                .3,
-                                        height: 60.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(
-                                                const Radius.circular(20).w),
-                                            color: const Color(0x000ebe7f)
-                                                .withOpacity(1)),
-                                        child: Center(
-                                            child: Text(
-                                          'Book Now',
-                                          style: TextStyle(fontSize: 70.sp),
-                                        )),
-                                      ),
-                                    )
+                                    Buttons(
+                                        Cwidth: 80.w,
+                                        fontSize: 10.sp,
+                                        text: 'Book Now',
+                                        onPressed: () {
+                                          navPush(
+                                              context, const PatientDetail01());
+                                        })
                                   ],
                                 ),
                               )
@@ -450,9 +378,9 @@ class _DiagnosticTestState extends State<DiagnosticTest> {
                     );
                   }),
             )
-          ])
-        ]),
-      ),
+          ]),
+        )
+      ]),
     );
   }
 }

@@ -1,7 +1,11 @@
-import 'package:doctor_consultation/src/Core/Screens/menu_screen.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/buttons.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/obscure_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -15,204 +19,148 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Positioned(
-          top: 750,
-          right: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
-        Positioned(
-          top: -30,
-          left: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
+        const Backgroundsplash(),
         Center(
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Welcome back',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 80.sp,
-                      color: Colors.black),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 70, right: 70),
-                  child: Text(
-                    'you can search course, apply course and find scholarship for abroad studies',
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Welcome back',
                     style: TextStyle(
-                        color: Colors.black.withOpacity(.7), fontSize: 60.sp),
-                    textAlign: TextAlign.center,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.sp,
+                        color: Colors.black),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 460.w,
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all()),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.g_mobiledata,
-                              size: 30,
-                              color: Colors.red,
-                            ),
-                            SizedBox(
-                              width: 20.w,
-                            ),
-                            Text(
-                              'Google',
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 60.sp),
-                            )
-                          ],
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Text(
+                      'you can search course, apply course and find scholarship for abroad studies',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(.7), fontSize: 10.sp),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 90.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(const Radius.circular(5).w),
+                              border: Border.all()),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: const FaIcon(
+                                    FontAwesomeIcons.google,
+                                    color: Colors.red,
+                                  )),
+                              Text(
+                                'Google',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 10.sp),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: 160,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all()),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.facebook,
-                              size: 20,
-                              color: Color.fromARGB(255, 0, 33, 59),
-                            ),
-                            SizedBox(
-                              width: 20.w,
-                            ),
-                            Text(
-                              'Facebook',
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 60.sp),
-                            )
-                          ],
+                        Container(
+                          width: 90.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(const Radius.circular(5).w),
+                              border: Border.all()),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: const FaIcon(FontAwesomeIcons.facebook),
+                                color: const Color(0x001f3f77).withOpacity(1),
+                              ),
+                              Text('Facebook',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 10.sp))
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 60, right: 60),
-                  child: Column(
-                    children: [
-                      TextField(
-                        style: const TextStyle(
-                          color: Colors.black,
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Column(
+                      children: [
+                        TextField(
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 12.sp),
+                          decoration: InputDecoration(
+                              labelText: 'Email',
+                              labelStyle: TextStyle(
+                                  color: Colors.black, fontSize: 10.sp),
+                              suffixIcon: const Icon(Icons.check),
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(const Radius.circular(5).w))),
                         ),
-                        decoration: InputDecoration(
-                            hintText: 'haiderullahls1@gmail.com',
-                            hintStyle:
-                                TextStyle(color: Colors.black, fontSize: 60.sp),
-                            suffixIcon: const Icon(Icons.check),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextField(
-                        style: const TextStyle(
-                          color: Colors.black,
+                        SizedBox(
+                          height: 10.h,
                         ),
-                        decoration: InputDecoration(
-                            hintText: '*************',
-                            hintStyle:
-                                TextStyle(color: Colors.black, fontSize: 60.sp),
-                            suffixIcon: const Icon(Icons.visibility_off),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                      )
-                    ],
+                        const PasswordField(
+                          labelText: 'Password',
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: 300.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0x000ebe7e).withOpacity(1),
+                  SizedBox(
+                    height: 8.h,
                   ),
-                  child: Center(
-                      child: Text(
-                    'Login',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 60.sp,
-                        fontWeight: FontWeight.bold),
-                  )),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    _showForgotPasswordDialog(context);
-                  },
-                  child: Text(
-                    'Forgot Password',
-                    style: TextStyle(
-                        color: const Color(0x000ebe7e).withOpacity(1),
-                        fontSize: 60.sp),
+                  Buttons(Cwidth: 120.w, text: 'Login', onPressed: () {}),
+                  SizedBox(
+                    height: 15.h,
                   ),
-                ),
-                const SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  'Don`t have an account? Join us',
-                  style: TextStyle(
-                      color: const Color(0x000ebe7f).withOpacity(1),
-                      fontSize: 60.sp),
-                ),
-              ],
+                  GestureDetector(
+                    onTap: () {
+                      _showForgotPasswordDialog(context);
+                    },
+                    child: Text(
+                      'Forgot Password',
+                      style: TextStyle(
+                          color: const Color(0x000ebe7e).withOpacity(1),
+                          fontSize: 10.sp),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 80.h,
+                  ),
+                  RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: 'Don`t have an account? ',
+                        style: TextStyle(color: Colors.black, fontSize: 9.sp)),
+                    TextSpan(
+                        text: 'Join us',
+                        style: TextStyle(
+                            color: mainColor.withOpacity(1), fontSize: 9.sp)),
+                  ])),
+                ],
+              ),
             ),
           ),
         ),
@@ -221,64 +169,55 @@ class _LoginState extends State<Login> {
   }
 
   void _showForgotPasswordDialog(BuildContext context) {
-    showDialog(
+    showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Forgot password',
-            style: TextStyle(
+        return SingleChildScrollView(
+          child: AlertDialog(
+            title: Text(
+              'Forgot password',
+              style: TextStyle(
                 color: Colors.black,
-                fontSize: 60.sp,
-                fontWeight: FontWeight.bold),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Enter your email for the verification process, we will send a 4-digit code to your email.',
-                style: TextStyle(
-                    color: Colors.black.withOpacity(.7), fontSize: 50.sp),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 20),
-              TextField(
-                style: const TextStyle(
-                  color: Colors.black,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  hintStyle: TextStyle(
-                      color: Colors.black.withOpacity(.7), fontSize: 60.sp),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Enter your email for the verification process. We will send a 4-digit code to your email.',
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(.7),
+                    fontSize: 10.sp,
                   ),
                 ),
-              ),
+                SizedBox(height: 10.h),
+                TextField(
+                  style: TextStyle(color: Colors.black, fontSize: 14.sp),
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: TextStyle(
+                      color: Colors.black.withOpacity(.7),
+                      fontSize: 12.sp,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              Center(
+                  child: Buttons(
+                      Cwidth: 100.w,
+                      text: 'Continue',
+                      onPressed: () {
+                        _showDigitsCodeDialog(context);
+                      })),
             ],
           ),
-          actions: [
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0x000ebe7e).withOpacity(1),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 30.w, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.all(const Radius.circular(10).w))),
-                onPressed: () {},
-                child: GestureDetector(
-                  onTap: () {
-                    _showDigitsCodeDialog(context);
-                  },
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(color: Colors.white, fontSize: 60.sp),
-                  ),
-                ),
-              ),
-            )
-          ],
         );
       },
     );
@@ -288,127 +227,52 @@ class _LoginState extends State<Login> {
 /////////////////////////////////////////////////////////////
 
 void _showDigitsCodeDialog(BuildContext context) {
-  showDialog(
+  showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          'Enter 4 Digits Code',
-          style: TextStyle(
+      return SingleChildScrollView(
+        child: AlertDialog(
+          title: Text(
+            'Enter 4 Digits Code',
+            style: TextStyle(
               color: Colors.black,
-              fontSize: 60.sp,
-              fontWeight: FontWeight.bold),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Enter the 4 digits code that you received on your email.',
-              style: TextStyle(
-                  color: Colors.black.withOpacity(.7), fontSize: 50.sp),
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 100.w,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10).w,
-                    // color: const Color.fromARGB(255, 226, 221, 221)
-                  ),
-                  child: Center(
-                    child: Text(
-                      '5',
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 50.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Enter the 4 digits code that you received on your email.',
+                style: TextStyle(
+                  color: Colors.black.withOpacity(.7),
+                  fontSize: 10.sp,
                 ),
-                //
-                Container(
-                  width: 100.w,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10).w,
-                    // color: const Color.fromARGB(255, 226, 221, 221)
-                  ),
-                  child: Center(
-                    child: Text(
-                      '3',
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 50.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-                //
-                Container(
-                  width: 100.w,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10).w,
-                    // color: const Color.fromARGB(255, 226, 221, 221)
-                  ),
-                  child: Center(
-                    child: Text(
-                      '0',
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 50.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-                //
-                Container(
-                  width: 100.w,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10).w,
-                    // color: const Color.fromARGB(255, 226, 221, 221)
-                  ),
-                  child: Center(
-                    child: Text(
-                      '1',
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 50.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                )
-              ],
-            )
+              ),
+              SizedBox(height: 10.h),
+              PinCodeTextField(
+                  pinTheme: PinTheme(
+                      selectedColor: Colors.red,
+                      inactiveColor: mainColor.withOpacity(.8),
+                      activeColor: Colors.amber),
+                  useHapticFeedback: true,
+                  textStyle: TextStyle(
+                      color: mainColor.withOpacity(1), fontSize: 14.sp),
+                  appContext: context,
+                  length: 4)
+            ],
+          ),
+          actions: [
+            Center(
+                child: Buttons(
+                    Cwidth: 100.w,
+                    text: 'Continue',
+                    onPressed: () {
+                      _showResetPasswordDialog(context);
+                    })),
           ],
         ),
-        actions: [
-          Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0x000ebe7e).withOpacity(1),
-                  padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10),
-                  shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.all(const Radius.circular(10).w))),
-              onPressed: () {
-                _showResetPasswordDialog(context);
-              },
-              child: Text(
-                'Continue',
-                style: TextStyle(color: Colors.white, fontSize: 60.sp),
-              ),
-            ),
-          )
-        ],
       );
     },
   );
@@ -416,78 +280,44 @@ void _showDigitsCodeDialog(BuildContext context) {
 ///////////////////////////////////////////////////////////////
 
 void _showResetPasswordDialog(BuildContext context) {
-  showDialog(
+  showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          'Reset Password',
-          style: TextStyle(
+      return SingleChildScrollView(
+        child: AlertDialog(
+          title: Text(
+            'Reset Password',
+            style: TextStyle(
               color: Colors.black,
-              fontSize: 60.sp,
-              fontWeight: FontWeight.bold),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Set the new password for your account so you can login and access all the features.',
-              style: TextStyle(
-                  color: Colors.black.withOpacity(.7), fontSize: 50.sp),
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 20),
-            TextField(
-              obscureText: true,
-              style: TextStyle(color: Colors.black, fontSize: 60.sp),
-              decoration: InputDecoration(
-                hintText: 'New Password',
-                suffixIcon: const Icon(Icons.visibility_off_outlined),
-                hintStyle: TextStyle(
-                    color: Colors.black.withOpacity(.7), fontSize: 60.sp),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Set the new password for your account so you can login and access all the features.',
+                style: TextStyle(
+                  color: Colors.black.withOpacity(.7),
+                  fontSize: 10.sp,
                 ),
               ),
-            ),
-            ///////
-            const SizedBox(height: 20),
-            TextField(
-              obscureText: true,
-              style: TextStyle(color: Colors.black, fontSize: 60.sp),
-              decoration: InputDecoration(
-                hintText: 'Re-enter Password',
-                suffixIcon: const Icon(Icons.visibility_off_outlined),
-                hintStyle: TextStyle(
-                    color: Colors.black.withOpacity(.7), fontSize: 60.sp),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
+              SizedBox(height: 10.h),
+              const PasswordField(labelText: 'New Password'),
+              SizedBox(height: 5.h),
+              const PasswordField(labelText: 'Re-enter Password'),
+            ],
+          ),
+          actions: [
+            Center(
+                child: Buttons(
+                    Cwidth: 120.w,
+                    fontSize: 12.sp,
+                    text: 'Update Password',
+                    onPressed: () {})),
           ],
         ),
-        actions: [
-          Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0x000ebe7e).withOpacity(1),
-                  padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10),
-                  shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.all(const Radius.circular(10).w))),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MenuScreen()));
-              },
-              child: Text(
-                'Update password',
-                style: TextStyle(color: Colors.white, fontSize: 60.sp),
-              ),
-            ),
-          )
-        ],
       );
     },
   );

@@ -17,13 +17,13 @@ class OnboardingButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           backgroundColor: mainColor.withOpacity(1),
-          padding: EdgeInsets.symmetric(horizontal: 140.w, vertical: 17),
+          padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 10.h),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(const Radius.circular(13).w))),
+              borderRadius: BorderRadius.all(const Radius.circular(6).w))),
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Colors.white, fontSize: 70.sp),
+        style: TextStyle(color: Colors.white, fontSize: 17.sp),
       ),
     );
   }

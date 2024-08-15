@@ -1,5 +1,5 @@
-import 'package:doctor_consultation/src/Core/Screens/menu_screen.dart';
-import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,90 +14,28 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Stack(children: [
-        Positioned(
-          top: 750,
-          right: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
+        body: Stack(children: [
+      const Backgroundsplash(),
+      SingleChildScrollView(
+        child: Column(children: [
+          AppbarPop(
+            sizedWidth: 10.w,
+            title: 'Privacy policy',
           ),
-        ),
-        Positioned(
-          top: -30,
-          left: -60,
-          child: Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                color: splashColor.withOpacity(0.1),
-                borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 100,
-                      spreadRadius: 150,
-                      color: splashColor.withOpacity(.7))
-                ]),
-          ),
-        ),
-        Column(children: [
-          Padding(
-              padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-              child: Row(children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MenuScreen()));
-                  },
-                  child: Container(
-                    height: 40.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.all(const Radius.circular(20).w)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.arrow_back_ios),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 80.w,
-                ),
-                Text(
-                  'Privacy policy',
-                  style: TextStyle(
-                      fontSize: 80.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                )
-              ])),
           SizedBox(
-            height: 900,
-            width: 335,
+            width: 190.w,
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Doctor Hunt Apps Privacy Policy',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: const Color(0x00677294).withOpacity(1),
-                        fontSize: 80.sp),
+                        fontSize: 12.sp),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
@@ -107,22 +45,25 @@ class _AboutState extends State<About> {
                             'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words believable. It is a long established fact that reader will distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moreIt is a long established fact that reader will distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more ',
                             style: TextStyle(
                                 color: const Color(0x00959cb4).withOpacity(.8),
-                                fontSize: 60.sp)),
+                                fontSize: 10.sp)),
                         SizedBox(
-                          height: 15.h,
+                          height: 10.h,
                         ),
                         Column(
                           children: [
-                            Image.asset('asset/Hassam/Group1.png'),
+                            Image.asset(
+                              'asset/Hassam/Group1.png',
+                              filterQuality: FilterQuality.high,
+                            ),
                             SizedBox(
-                              height: 15.h,
+                              height: 10.h,
                             ),
                             Text(
                                 'It is a long established fact that reader distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moreIt is a long established.',
                                 style: TextStyle(
                                     color:
                                         const Color(0x00959cb4).withOpacity(.8),
-                                    fontSize: 60.sp)),
+                                    fontSize: 10.sp)),
                           ],
                         )
                       ],
@@ -133,7 +74,7 @@ class _AboutState extends State<About> {
             ),
           )
         ]),
-      ]),
-    ));
+      ),
+    ]));
   }
 }

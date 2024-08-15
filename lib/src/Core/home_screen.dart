@@ -4,8 +4,11 @@ import 'package:doctor_consultation/src/Core/Screens/menu_screen.dart';
 import 'package:doctor_consultation/src/Core/favourite_screen.dart';
 import 'package:doctor_consultation/src/Core/live_screen.dart';
 import 'package:doctor_consultation/src/Core/popular_doctor.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/fav_icon.dart';
 import 'package:doctor_consultation/src/Feature/Auth_Screens/signup.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePush.dart';
+import 'package:doctor_consultation/src/Utils/navigatePushReplacement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
@@ -15,7 +18,7 @@ List images = [
   'asset/home-screen-live02.jpeg',
   'asset/home-screen-live03.jpeg'
 ];
-List main_gradient01 = [
+List mainGradient01 = [
   //////////Blue Gradient///////
   const Color(0x002753f3).withOpacity(1),
   //////////Green Gradient///////
@@ -26,7 +29,7 @@ List main_gradient01 = [
   const Color(0x00ff484c).withOpacity(1),
 ];
 
-List main_gradient02 = [
+List mainGradient02 = [
   //////////Blue Gradient///////
   const Color(0x00765afc).withOpacity(1),
   //////////Green Gradient///////
@@ -57,33 +60,33 @@ List stack02 = [
   ////////Red/////////
   const Color(0x00ffffff).withOpacity(.06),
 ];
-List stack_image = [
+List stackImage = [
   'asset/Home-Screen/tooth.png',
   'asset/Home-Screen/heart.png',
   'asset/Home-Screen/eye.png',
   'asset/Home-Screen/exercise.png',
 ];
 
-List popular_dr = [
+List popularDr = [
   'asset/Home-Screen/dr-grab.jpeg',
   'asset/Home-Screen/dr-blessing.jpeg',
 ];
-List popular_dr_name = ['Dr. Fillerup Grab', 'Dr. Blessing'];
-List popular_dr_occupation = ['Medicine Specialist', 'Dentist Specialist'];
-List feature_dr_rating = ['3.7', '3.0', '2.9', '2.2'];
-List feature_dr_image = [
+List popularDrName = ['Dr. Fillerup Grab', 'Dr. Blessing'];
+List popularDrOccupation = ['Medicine Specialist', 'Dentist Specialist'];
+List featureDrRating = ['3.7', '3.0', '2.9', '2.2'];
+List featureDrImage = [
   'asset/Home-Screen/feature-dr-1.jpeg',
   'asset/Home-Screen/feature-dr-2.jpeg',
   'asset/Home-Screen/feature-dr-3.jpeg',
   'asset/Home-Screen/feature-dr-1.jpeg',
 ];
-List feature_dr_name = [
+List featureDrName = [
   'Dr. Crick',
   'Dr. Strain',
   'Dr. Lachinet',
   'Dr. Crick',
 ];
-List feature_dr_price = [
+List featureDrPrice = [
   '\$ 25.00/ hours',
   '\$ 22.00/ hours',
   '\$ 29.00/ hours',
@@ -109,8 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Stack(
               children: [
                 Container(
-                  width: 280.w,
-                  height: 270.h,
+                  width: 25.w,
+                  height: 170.h,
                   decoration: BoxDecoration(
                       color: splashColor.withOpacity(0.1),
                       borderRadius:
@@ -124,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width,
-                  height: 200.h,
+                  height: 150.h,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.centerLeft,
@@ -134,12 +137,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainColor.withOpacity(.4)
                           ]),
                       borderRadius: BorderRadius.only(
-                          bottomLeft: const Radius.circular(50).w,
-                          bottomRight: const Radius.circular(50).w)),
+                          bottomLeft: const Radius.circular(15).w,
+                          bottomRight: const Radius.circular(15).w)),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+                      const EdgeInsets.symmetric(vertical: 65, horizontal: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -148,25 +151,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextSpan(
                               text: 'Hi Handwerker!\n',
                               style: TextStyle(
-                                  fontSize: 40.sp,
+                                  fontSize: 17.sp,
                                   color: Colors.white.withOpacity(.7))),
                           TextSpan(
                               text: 'Find Your Doctor',
                               style: TextStyle(
-                                  fontSize: 50.sp, fontWeight: FontWeight.bold))
+                                  fontSize: 14.sp, fontWeight: FontWeight.bold))
                         ]),
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MenuScreen()));
+                          navPush(context, const MenuScreen());
                         },
                         child: CircleAvatar(
                           backgroundImage: const AssetImage(
                               'asset/home-screen-profile.jpeg'),
-                          radius: 180.r,
+                          radius: 30.r,
                         ),
                       ),
                     ],
@@ -177,18 +177,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.only(top: 180),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const FindDoctors()));
+                        navPush(context, const FindDoctors());
                       },
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * .8,
-                        height: 50.h,
+                        height: 40.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                                BorderRadius.all(const Radius.circular(15).w)),
+                                BorderRadius.all(const Radius.circular(5).w)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 18.0),
                           child: Row(
@@ -207,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Text(
                                     'Search.....',
                                     style: TextStyle(
-                                        fontSize: 30.sp,
+                                        fontSize: 12.sp,
                                         color: const Color(0x00677294)
                                             .withOpacity(1)),
                                   ),
@@ -227,19 +224,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 0, left: 18),
+              padding: const EdgeInsets.only(top: 20, left: 18),
               child: Text(
                 'Live Doctors',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 80.sp,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 8),
+              padding: const EdgeInsets.all(8),
               child: SizedBox(
-                height: 200.h,
+                height: 130.h,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 3,
@@ -249,18 +246,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Stack(children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LiveScreen()));
+                              navPush(context, const LiveScreen());
                             },
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * .4,
-                              height: 300.h,
+                              height: 200.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
-                                    const Radius.circular(20).w),
+                                    const Radius.circular(15).w),
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.all(
@@ -275,25 +268,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Positioned(
-                            right: -15,
+                            right: -8,
                             top: -10,
                             child: Padding(
                               padding: const EdgeInsets.all(20),
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const LiveScreen()));
+                                  navPush(context, const LiveScreen());
                                 },
                                 child: Container(
-                                  width: 170.w,
+                                  width: 30.w,
                                   height: 20.h,
                                   decoration: BoxDecoration(
                                       color: Colors.red,
                                       borderRadius: BorderRadius.all(
-                                          const Radius.circular(5).w)),
+                                          const Radius.circular(2).w)),
                                   child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -304,13 +293,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Colors.white,
                                         ),
                                         SizedBox(
-                                          width: 4.w,
+                                          width: 2.w,
                                         ),
                                         Text(
                                           'Live',
                                           style: TextStyle(
                                               fontWeight: FontWeight.normal,
-                                              fontSize: 30.sp),
+                                              fontSize: 10.sp),
                                         ),
                                       ]),
                                 ),
@@ -325,14 +314,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const LiveScreen()));
+                                      navPush(context, const LiveScreen());
                                     },
                                     child: Container(
-                                      width: 80.w,
+                                      width: 20.w,
                                       height: 30.h,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
@@ -355,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                    height: 100.h,
+                    height: 70.h,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
@@ -369,8 +354,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                           colors: [
-                                            main_gradient01[index],
-                                            main_gradient02[index],
+                                            mainGradient01[index],
+                                            mainGradient02[index],
                                           ],
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight),
@@ -383,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * .2,
-                                    height: 80.h,
+                                    height: 60.h,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                             const Radius.circular(100).w),
@@ -392,7 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Positioned(
                                   left: 10,
-                                  bottom: -40,
+                                  bottom: -60,
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * .2,
@@ -404,33 +389,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Positioned(
-                                    top: -20,
-                                    left: 25,
+                                    top: 15,
+                                    left: 20,
                                     child: Image.asset(
-                                      '${stack_image[index]}',
-                                      width: 150.w,
-                                      height: 150.h,
+                                      '${stackImage[index]}',
+                                      width: 30.w,
+                                      height: 50.h,
                                     ))
                               ]));
                         }))),
             Padding(
-              padding: const EdgeInsets.only(top: 30, left: 18),
+              padding: const EdgeInsets.only(top: 20, left: 18),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Popular Doctor',
                     style: TextStyle(
-                        fontSize: 80.sp,
+                        fontSize: 20.sp,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const PopularDoctor()));
+                      navPush(context, const PopularDoctor());
                     },
                     child: Row(
                       children: [
@@ -438,7 +420,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           'See all',
                           style: TextStyle(
                               color: Colors.black.withOpacity(.7),
-                              fontSize: 50.sp),
+                              fontSize: 12.sp),
                         ),
                         const Icon(Icons.arrow_right_rounded)
                       ],
@@ -448,56 +430,50 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 0),
+              padding: const EdgeInsets.all(8),
               child: SizedBox(
-                height: 280.h,
+                height: 172.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 2,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(8),
                       child: Column(
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PopularDoctor()));
+                              navPush(context, const PopularDoctor());
                             },
                             child: SizedBox(
-                              width: 700.w,
-                              height: 157.h,
+                              width: 100.w,
+                              height: 100.h,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.only(
-                                    topLeft: const Radius.circular(30).w,
-                                    topRight: const Radius.circular(30).w),
+                                    topLeft: const Radius.circular(8).w,
+                                    topRight: const Radius.circular(8).w),
                                 child: Image.asset(
-                                  '${popular_dr[index]}',
-                                  fit: BoxFit.fitWidth,
+                                  height: 90.h,
+                                  width: 20.w,
+                                  '${popularDr[index]}',
                                   alignment: Alignment.topCenter,
+                                  fit: BoxFit.fitWidth,
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 3.h,
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PopularDoctor()));
+                              navPush(context, const PopularDoctor());
                             },
                             child: Text(
-                              '${popular_dr_name[index]}',
+                              '${popularDrName[index]}',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 80.sp,
+                                  fontSize: 12.sp,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -505,11 +481,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 3.h,
                           ),
                           Text(
-                            '${popular_dr_occupation[index]}',
+                            '${popularDrOccupation[index]}',
                             style: TextStyle(
                               color: Colors.black.withOpacity(.7),
-                              fontSize: 50.sp,
+                              fontSize: 9.sp,
                             ),
+                          ),
+                          SizedBox(
+                            height: 5.h,
                           ),
                           RatingBar(
                             size: 25,
@@ -527,14 +506,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 18, right: 15),
+              padding: const EdgeInsets.only(
+                top: 20,
+                left: 18,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Feature Doctor',
                     style: TextStyle(
-                        fontSize: 80.sp,
+                        fontSize: 20.sp,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
@@ -544,7 +526,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         'See all',
                         style: TextStyle(
                             color: Colors.black.withOpacity(.7),
-                            fontSize: 50.sp),
+                            fontSize: 12.sp),
                       ),
                       const Icon(Icons.arrow_right_rounded)
                     ],
@@ -555,7 +537,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                height: 200.h,
+                height: 170.h,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
@@ -563,11 +545,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          width: 400.w,
-                          height: 100.h,
+                          width: 80.w,
+                          height: 60.h,
                           decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.all(const Radius.circular(30).w),
+                                BorderRadius.all(const Radius.circular(8).w),
                             color: Colors.white,
                           ),
                           child: Column(
@@ -578,7 +560,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const favIcon(),
+                                    const FavIcon(),
                                     Row(
                                       children: [
                                         RatingBar(
@@ -591,12 +573,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           maxRating: 1,
                                         ),
                                         SizedBox(
-                                          width: 5.w,
+                                          width: 3.w,
                                         ),
                                         Text(
-                                          '${feature_dr_rating[index]}',
+                                          '${featureDrRating[index]}',
                                           style: TextStyle(
-                                              fontSize: 70.sp,
+                                              fontSize: 11.sp,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black),
                                         ),
@@ -606,25 +588,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               CircleAvatar(
-                                radius: 130.r,
+                                radius: 40.r,
                                 backgroundImage: AssetImage(
-                                  '${feature_dr_image[index]}',
+                                  '${featureDrImage[index]}',
                                 ),
                               ),
                               SizedBox(
                                 height: 5.h,
                               ),
                               Text(
-                                '${feature_dr_name[index]}',
+                                '${featureDrName[index]}',
                                 style: TextStyle(
-                                    fontSize: 50.sp,
+                                    fontSize: 15.sp,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '${feature_dr_price[index]}',
+                                '${featureDrPrice[index]}',
                                 style: TextStyle(
-                                    fontSize: 50.sp, color: Colors.black),
+                                    fontSize: 10.sp, color: Colors.black),
                               ),
                             ],
                           ),
@@ -645,16 +627,11 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _selectedIndex = clickedIndex;
             if (clickedIndex == 0) {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+              pushReplacement(context, const HomeScreen());
             } else if (clickedIndex == 1) {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const FavouriteScreen()));
+              pushReplacement(context, const FavouriteScreen());
             } else if (clickedIndex == 3) {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const Signup()));
+              pushReplacement(context, const Signup());
             }
           });
         },
@@ -664,7 +641,6 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(
               Icons.home,
             ),
-            title: const Text('Home'),
             selectedColor: Colors.white,
             unselectedColor: mainColor.withOpacity(1),
           ),
@@ -690,33 +666,6 @@ class _HomeScreenState extends State<HomeScreen> {
             unselectedColor: mainColor.withOpacity(1),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class favIcon extends StatefulWidget {
-  const favIcon({
-    super.key,
-  });
-
-  @override
-  State<favIcon> createState() => _favIconState();
-}
-
-class _favIconState extends State<favIcon> {
-  bool fav = false;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          fav = !fav;
-        });
-      },
-      child: Icon(
-        fav ? Icons.favorite : Icons.favorite_outline,
-        color: fav ? Colors.red : Colors.black,
       ),
     );
   }

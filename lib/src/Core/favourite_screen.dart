@@ -1,7 +1,11 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:doctor_consultation/src/Core/home_screen.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar1.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/fav_icon.dart';
 import 'package:doctor_consultation/src/Feature/Auth_Screens/signup.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
+import 'package:doctor_consultation/src/Utils/navigatePushReplacement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
@@ -49,94 +53,31 @@ class FavouriteScreen extends StatefulWidget {
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
   int _selectedIndex = 1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(children: [
-          Positioned(
-            top: 750,
-            right: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
+      body: Stack(children: [
+        const Backgroundsplash(),
+        SingleChildScrollView(
+          child: Column(children: [
+            Appbar1(
+              page: const HomeScreen(),
+              sizedWidth: 10.w,
+              title: 'Favourite Doctors',
             ),
-          ),
-          Positioned(
-            top: -30,
-            left: -60,
-            child: Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                  color: splashColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(const Radius.circular(250).w),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 100,
-                        spreadRadius: 150,
-                        color: splashColor.withOpacity(.7))
-                  ]),
-            ),
-          ),
-          Column(children: [
-            Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-                child: Row(children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    },
-                    child: Container(
-                      height: 40.h,
-                      width: 100.w,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(20).w)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.arrow_back_ios),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80.w,
-                  ),
-                  Text(
-                    'Favourite Doctors',
-                    style: TextStyle(
-                        fontSize: 80.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  )
-                ])),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: TextField(
                 keyboardType: TextInputType.text,
-                style: TextStyle(fontSize: 50.sp, color: Colors.black),
+                style: TextStyle(fontSize: 13.sp, color: Colors.black),
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      const Radius.circular(20).w,
+                      const Radius.circular(5).w,
                     ),
                   ),
                   contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   focusColor: Colors.black,
                   filled: true,
                   fillColor: Colors.white,
@@ -147,97 +88,87 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                     Icons.cancel_outlined,
                   ),
                   hintText: 'Dentist',
-                  hintStyle: TextStyle(fontSize: 50.sp, color: Colors.black),
+                  hintStyle: TextStyle(fontSize: 13.sp, color: Colors.black),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      const Radius.circular(20).w,
+                      const Radius.circular(5).w,
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: 450.h,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: 500.w,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(const Radius.circular(20).w),
-                              color: Colors.white.withOpacity(1),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: favIcon(),
-                                  ),
-                                ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      const Radius.circular(170).w),
-                                  child: Image.asset(
-                                    '${images[index]}',
-                                    height: 90.h,
-                                    width: 270.w,
-                                    fit: BoxFit.cover,
-                                    alignment: Alignment.topCenter,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Text(
-                                  '${names[index]}',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 70.sp),
-                                ),
-                                Text(
-                                  '${occupation[index]}',
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(.7),
-                                      fontSize: 50.sp),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 4,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.8, // Adjust the aspect ratio if needed
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
               ),
-            ),
-            SizedBox(
-              height: 10.h,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: 250.w,
+                    height: 180.h,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(5).w),
+                      color: Colors.white.withOpacity(1),
+                    ),
+                    child: Column(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(right: 8.0, top: 10),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: FavIcon(),
+                          ),
+                        ),
+                        ClipRRect(
+                          borderRadius:
+                              BorderRadius.all(const Radius.circular(50).w),
+                          child: Image.asset(
+                            '${images[index]}',
+                            height: 90.h,
+                            width: 60.w,
+                            fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 3.h,
+                        ),
+                        Text(
+                          '${names[index]}',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.sp),
+                        ),
+                        Text(
+                          '${occupation[index]}',
+                          style: TextStyle(
+                              color: Colors.black.withOpacity(.7),
+                              fontSize: 9.sp),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 18, right: 15),
+              padding: const EdgeInsets.only(top: 28.0, left: 18),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Feature Doctor',
                     style: TextStyle(
-                        fontSize: 80.sp,
+                        fontSize: 20.sp,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
@@ -247,7 +178,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         'See all',
                         style: TextStyle(
                             color: Colors.black.withOpacity(.7),
-                            fontSize: 50.sp),
+                            fontSize: 12.sp),
                       ),
                       const Icon(Icons.arrow_right_rounded)
                     ],
@@ -258,7 +189,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                height: 200.h,
+                height: 150.h,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
@@ -266,11 +197,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          width: 400.w,
-                          height: 100.h,
+                          width: 80.w,
+                          height: 80.h,
                           decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.all(const Radius.circular(30).w),
+                                BorderRadius.all(const Radius.circular(3).w),
                             color: Colors.white,
                           ),
                           child: Column(
@@ -281,7 +212,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const favIcon(),
+                                    const FavIcon(),
                                     Row(
                                       children: [
                                         RatingBar(
@@ -294,12 +225,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                           maxRating: 1,
                                         ),
                                         SizedBox(
-                                          width: 5.w,
+                                          width: 3.w,
                                         ),
                                         Text(
                                           '${feature_dr_rating[index]}',
                                           style: TextStyle(
-                                              fontSize: 70.sp,
+                                              fontSize: 11.sp,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black),
                                         ),
@@ -309,25 +240,25 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                 ),
                               ),
                               CircleAvatar(
-                                radius: 130.r,
+                                radius: 30.r,
                                 backgroundImage: AssetImage(
                                   '${feature_dr_image[index]}',
                                 ),
                               ),
                               SizedBox(
-                                height: 5.h,
+                                height: 3.h,
                               ),
                               Text(
                                 '${feature_dr_name[index]}',
                                 style: TextStyle(
-                                    fontSize: 50.sp,
+                                    fontSize: 12.sp,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${feature_dr_price[index]}',
                                 style: TextStyle(
-                                    fontSize: 50.sp, color: Colors.black),
+                                    fontSize: 9.sp, color: Colors.black),
                               ),
                             ],
                           ),
@@ -336,9 +267,9 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                     }),
               ),
             )
-          ])
-        ]),
-      ),
+          ]),
+        ),
+      ]),
       bottomNavigationBar: MoltenBottomNavigationBar(
         domeCircleColor: mainColor.withOpacity(1),
         selectedIndex: _selectedIndex,
@@ -348,16 +279,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           setState(() {
             _selectedIndex = clickedIndex;
             if (clickedIndex == 0) {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+              pushReplacement(context, const HomeScreen());
             } else if (clickedIndex == 1) {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const FavouriteScreen()));
+              pushReplacement(context, const FavouriteScreen());
             } else if (clickedIndex == 3) {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const Signup()));
+              pushReplacement(context, const Signup());
             }
           });
         },
@@ -393,33 +319,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             unselectedColor: mainColor.withOpacity(1),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class favIcon extends StatefulWidget {
-  const favIcon({
-    super.key,
-  });
-
-  @override
-  State<favIcon> createState() => _favIconState();
-}
-
-class _favIconState extends State<favIcon> {
-  bool fav = false;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          fav = !fav;
-        });
-      },
-      child: Icon(
-        fav ? Icons.favorite : Icons.favorite_outline,
-        color: fav ? Colors.red : Colors.black,
       ),
     );
   }

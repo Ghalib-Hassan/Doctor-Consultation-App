@@ -1,5 +1,7 @@
 import 'package:custom_rating_bar/custom_rating_bar.dart';
-import 'package:doctor_consultation/src/Core/Screens/book_now1.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/appbar_pop.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/backgroundSplash.dart';
+import 'package:doctor_consultation/src/Custom_Widgets/fav_icon.dart';
 import 'package:doctor_consultation/src/Utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,131 +25,82 @@ class _BookNow02State extends State<BookNow02> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(children: [
-      Positioned(
-        top: 750,
-        right: -60,
-        child: Container(
-          width: 80.w,
-          height: 80.h,
-          decoration: BoxDecoration(
-              color: splashColor.withOpacity(0.1),
-              borderRadius: BorderRadius.all(const Radius.circular(250).w),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 100,
-                    spreadRadius: 150,
-                    color: splashColor.withOpacity(.7))
-              ]),
-        ),
-      ),
-      Positioned(
-        top: -30,
-        left: -60,
-        child: Container(
-          width: 80.w,
-          height: 80.h,
-          decoration: BoxDecoration(
-              color: splashColor.withOpacity(0.1),
-              borderRadius: BorderRadius.all(const Radius.circular(250).w),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 100,
-                    spreadRadius: 150,
-                    color: splashColor.withOpacity(.7))
-              ]),
-        ),
-      ),
+      const Backgroundsplash(),
       Column(children: [
-        Padding(
-            padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20),
-            child: Row(children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const BookNow()));
-                },
-                child: Container(
-                  height: 40.h,
-                  width: 100.w,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.all(const Radius.circular(20).w)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back_ios),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 80.w,
-              ),
-              Text(
-                'Select Time',
-                style: TextStyle(
-                    fontSize: 80.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              )
-            ])),
-        SizedBox(
-          height: 50.h,
+        AppbarPop(
+          sizedWidth: 10.w,
+          title: 'Select Time',
         ),
-        Container(
-          width: 1100.w,
-          height: 100.h,
-          decoration: BoxDecoration(
-              color: Colors.white.withOpacity(1),
-              borderRadius: BorderRadius.all(const Radius.circular(20).w)),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.all(const Radius.circular(20).w),
-                  child: Image.asset(
-                    width: 350.w,
-                    height: 90.h,
-                    'asset/Find-Doctors/one.jpeg',
-                    fit: BoxFit.cover,
+        SizedBox(
+          height: 30.h,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: 190.w,
+            height: 100.h,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(1),
+                borderRadius: BorderRadius.all(const Radius.circular(5).w)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(const Radius.circular(5).w),
+                    child: Image.asset(
+                      width: 60.w,
+                      height: 90.h,
+                      'asset/Find-Doctors/one.jpeg',
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Dr. Shruti Kedia',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 60.sp,
-                          color: Colors.black),
-                    ),
-                    Text(
-                      'Upasana Dental Clinic, salt lake',
-                      style: TextStyle(
-                          fontSize: 40.sp,
-                          color: const Color(0x00677294).withOpacity(1)),
-                    ),
-                    RatingBar(
-                      size: 20,
-                      filledIcon: Icons.star,
-                      emptyIcon: Icons.star_border,
-                      onRatingChanged: (value) => debugPrint('$value'),
-                      initialRating: 3,
-                      maxRating: 5,
-                    )
-                  ],
-                ),
-                const favIcon()
-              ],
+                  Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 9.h,
+                      ),
+                      Text(
+                        'Dr. Shruti Kedia',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.sp,
+                            color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 9.h,
+                      ),
+                      Text(
+                        'Upasana Dental Clinic, salt lake',
+                        style: TextStyle(
+                            fontSize: 9.sp,
+                            color: const Color(0x00677294).withOpacity(1)),
+                      ),
+                      SizedBox(
+                        height: 9.h,
+                      ),
+                      RatingBar(
+                        size: 20,
+                        filledIcon: Icons.star,
+                        emptyIcon: Icons.star_border,
+                        onRatingChanged: (value) => debugPrint('$value'),
+                        initialRating: 3,
+                        maxRating: 5,
+                      )
+                    ],
+                  ),
+                  const FavIcon()
+                ],
+              ),
             ),
           ),
         ),
         SizedBox(
-          height: 100.h,
+          height: 80.h,
           child: Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -170,11 +123,11 @@ class _BookNow02State extends State<BookNow02> {
           'Today, 23 Feb',
           style: TextStyle(
               color: Colors.black,
-              fontSize: 80.sp,
+              fontSize: 14.sp,
               fontWeight: FontWeight.bold),
         ),
         SizedBox(
-          height: 30.h,
+          height: 20.h,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0),
@@ -184,14 +137,14 @@ class _BookNow02State extends State<BookNow02> {
                 'Afternoon 7 slots',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 80.sp,
+                    fontSize: 14.sp,
                     color: Colors.black),
               )
             ],
           ),
         ),
         SizedBox(
-          height: 80.h,
+          height: 60.h,
           child: Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -209,10 +162,7 @@ class _BookNow02State extends State<BookNow02> {
           ),
         ),
         SizedBox(
-          height: 2.h,
-        ),
-        SizedBox(
-          height: 80.h,
+          height: 60.h,
           child: Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -230,7 +180,7 @@ class _BookNow02State extends State<BookNow02> {
           ),
         ),
         SizedBox(
-          height: 30.h,
+          height: 10.h,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15.0),
@@ -240,14 +190,14 @@ class _BookNow02State extends State<BookNow02> {
                 'Evening 5 slots',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 80.sp,
+                    fontSize: 14.sp,
                     color: Colors.black),
               ),
             ],
           ),
         ),
         SizedBox(
-          height: 80.h,
+          height: 60.h,
           child: Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -264,9 +214,8 @@ class _BookNow02State extends State<BookNow02> {
             ),
           ),
         ),
-        SizedBox(height: 2.h),
         SizedBox(
-          height: 80.h,
+          height: 60.h,
           child: Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -311,16 +260,16 @@ class _selectedContainer02State extends State<selectedContainer02> {
         });
       },
       child: Container(
-        width: 278.w,
+        width: 50.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(const Radius.circular(20).w),
+          borderRadius: BorderRadius.all(const Radius.circular(5).w),
           color: select ? mainColor.withOpacity(1) : Colors.white,
         ),
         child: Center(
           child: Text(
             widget.text,
             style: TextStyle(
-                fontSize: 50.sp,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.bold,
                 color: select ? Colors.white : mainColor.withOpacity(1)),
           ),
@@ -358,9 +307,9 @@ class _selectedContainerState extends State<selectedContainer> {
         });
       },
       child: Container(
-        width: 550.w,
+        width: 100.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(const Radius.circular(20).w),
+          borderRadius: BorderRadius.all(const Radius.circular(5).w),
           color: isSelected ? mainColor.withOpacity(1) : Colors.white,
         ),
         child: Column(
@@ -369,7 +318,7 @@ class _selectedContainerState extends State<selectedContainer> {
             Text(
               widget.date,
               style: TextStyle(
-                fontSize: 60.sp,
+                fontSize: 14.sp,
                 color: isSelected ? Colors.white : Colors.black,
                 fontWeight: FontWeight.bold,
               ),
@@ -377,7 +326,7 @@ class _selectedContainerState extends State<selectedContainer> {
             Text(
               widget.slot,
               style: TextStyle(
-                fontSize: 40.sp,
+                fontSize: 9.sp,
                 color: isSelected
                     ? Colors.white
                     : const Color(0x00677294).withOpacity(1),
