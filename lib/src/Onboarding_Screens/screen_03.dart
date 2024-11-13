@@ -25,32 +25,35 @@ class _OnboardingScreen03State extends State<OnboardingScreen03> {
               backgroundImage: const AssetImage(
                 'asset/onboarding03.jpg',
               ),
-              radius: 110.r,
+              radius:180.r,
             ),
           ),
           Center(
             child: SizedBox(
-              width: 180.w,
+              // width: 180.w,
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 320.h,
+                  const SizedBox(
+                    height: 370,
                   ),
-                  Text('Easy Appointments',
+                  const Text('Easy Appointments',
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20.sp,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold)),
                   SizedBox(
                     height: 3.h,
                   ),
-                  Text(
-                    'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.7),
-                      fontSize: 12.sp,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(.7),
+                        fontSize: 15,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                   SizedBox(
                     height: 60.h,
@@ -78,7 +81,7 @@ class _OnboardingScreen03State extends State<OnboardingScreen03> {
                       'Skip',
                       style: TextStyle(
                           color: Colors.black.withOpacity(.5),
-                          fontSize: 17.sp,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

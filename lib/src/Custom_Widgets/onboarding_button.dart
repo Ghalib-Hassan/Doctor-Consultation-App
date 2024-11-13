@@ -23,7 +23,7 @@ class OnboardingButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Colors.white, fontSize: 17.sp),
+        style: TextStyle(color: Colors.white, fontSize: 27.sp),
       ),
     );
   }

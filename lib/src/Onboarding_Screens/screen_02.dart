@@ -20,78 +20,73 @@ class _OnboardingScreen02State extends State<OnboardingScreen02> {
         children: [
           const OnboardingSplash2(),
           Positioned(
-            right: 30,
-            top: 100,
-            child: Container(
-              width: 110.r * 2,
-              height: 110.r * 2,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage('asset/onboarding02.jpg'),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.centerRight,
-                ),
+            right: 15,
+            top: 80,
+            child: CircleAvatar(
+              backgroundImage: const AssetImage(
+                'asset/onboarding02.jpg',
               ),
+              radius: 200.r,
             ),
           ),
-          Center(
-            child: SizedBox(
-              width: 180.w,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 320.h,
-                  ),
-                  Text('Choose Best Doctors',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold)),
-                  SizedBox(
-                    height: 3.h,
-                  ),
-                  Text(
+          SizedBox(
+            // width: 260.w,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 370,
+                ),
+                const Text('Choose Best Doctors',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
+                SizedBox(
+                  height: 3.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
                     'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
                     style: TextStyle(
                       color: Colors.black.withOpacity(.7),
-                      fontSize: 12.sp,
+                      fontSize: 25.sp,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
-                    height: 60.h,
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                OnboardingButton(
+                  text: 'Get Started',
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const OnboardingScreen03()));
+                  },
+                  child: Text(
+                    'Skip',
+                    style: TextStyle(
+                        color: Colors.black.withOpacity(.5),
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.bold),
                   ),
-                  OnboardingButton(
-                    text: 'Get Started',
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const OnboardingScreen03()));
-                    },
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                          color: Colors.black.withOpacity(.5),
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

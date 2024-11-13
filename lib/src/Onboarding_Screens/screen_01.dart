@@ -20,39 +20,42 @@ class _OnboardingScreen01State extends State<OnboardingScreen01> {
         children: [
           const Onboardingsplash(),
           Positioned(
-            left: 30,
-            top: 100,
+            left: 10,
+            top: 80,
             child: CircleAvatar(
               backgroundImage: const AssetImage(
                 'asset/onboarding01.jpg',
               ),
-              radius: 110.r,
+              radius: 200.r,
             ),
           ),
           SafeArea(
             child: Center(
               child: SizedBox(
-                width: 180.w,
+                // width: 190,
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 320.h,
+                    const SizedBox(
+                      height: 350,
                     ),
-                    Text('Find Trusted Doctors',
+                    const Text('Find Trusted Doctors',
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20.sp,
+                            fontSize: 19,
                             fontWeight: FontWeight.bold)),
                     SizedBox(
-                      height: 3.h,
+                      height: 5.h,
                     ),
-                    Text(
-                      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
-                      style: TextStyle(
-                        color: Colors.black.withOpacity(.7),
-                        fontSize: 12.sp,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(.7),
+                          fontSize: 15,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     SizedBox(
                       height: 60.h,
@@ -81,7 +84,7 @@ class _OnboardingScreen01State extends State<OnboardingScreen01> {
                         'Skip',
                         style: TextStyle(
                             color: Colors.black.withOpacity(.5),
-                            fontSize: 17.sp,
+                            fontSize: 27.sp,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
